@@ -67,6 +67,7 @@ def score(rows: list[dict]) -> dict:
             r["route"] == r["expected_route"] and set(r["expected_issues"]) <= set(r["issues"]) for r in problems
         ),  # fmt: skip
         "by_problem": {},
+        "by_feature": {},
         "confusion": dict(Counter(f"{r['expected_route']}->{r['route']}" for r in rows)),
         "fields": {},
         "all_fields_correct": sum(r["all_fields_ok"] for r in rows),
