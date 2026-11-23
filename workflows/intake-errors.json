@@ -1,0 +1,56 @@
+{
+  "id": "IntakeErrors0001",
+  "name": "Invoice intake errors",
+  "nodes": [
+    {
+      "id": "workflow-failed",
+      "name": "Workflow failed",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        300
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "log-to-audit-trail",
+      "name": "Log to audit trail",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        240,
+        300
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.INTAKE_API_URL }}/events",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ event: 'workflow_error', detail: { workflow: $json.workflow.name, node: $json.execution.lastNodeExecuted, message: $json.execution.error.message, execution_id: $json.execution.id } }) }}",
+        "options": {
+          "timeout": 30000
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Workflow failed": {
+      "main": [
+        [
+          {
+            "node": "Log to audit trail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "active": false,
+  "pinData": {},
+  "tags": []
+}

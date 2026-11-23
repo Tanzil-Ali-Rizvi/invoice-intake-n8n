@@ -1,0 +1,2689 @@
+{
+ "meta": {
+  "today": "2026-11-20",
+  "buyer": {
+   "name": "Acme Retail Private Limited",
+   "gstin": "07AABCA1234A1ZL",
+   "address": "Plot 14, Okhla Industrial Area Phase II, New Delhi 110020"
+  },
+  "count": 63
+ },
+ "invoices": [
+  {
+   "id": "inv-001",
+   "file": "pdfs/inv-001.pdf",
+   "layout": 0,
+   "split": "dev",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "allowed_issues": [],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Sharma Office Supplies",
+    "vendor_gstin": "07AKJPS4821M1ZN",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "SO/2026-27/8291",
+    "invoice_date": "2026-11-14",
+    "po_number": "PO-25131",
+    "taxable_value": 5328.0,
+    "cgst": 460.98,
+    "sgst": 460.98,
+    "igst": 0.0,
+    "total": 6249.96,
+    "line_items": [
+     {
+      "description": "A4 copier paper, 500 sheets",
+      "quantity": 2,
+      "unit_price": 426.0,
+      "amount": 852.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "Box files",
+      "quantity": 6,
+      "unit_price": 103.0,
+      "amount": 618.0,
+      "gst_rate": 12
+     },
+     {
+      "description": "Stapler, heavy duty",
+      "quantity": 6,
+      "unit_price": 643.0,
+      "amount": 3858.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-002",
+   "file": "pdfs/inv-002.pdf",
+   "layout": 0,
+   "split": "test",
+   "problem": "invalid_gstin",
+   "expected_route": "review",
+   "expected_issues": [
+    "invalid_gstin"
+   ],
+   "allowed_issues": [
+    "invalid_gstin"
+   ],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Vega Logistics LLP",
+    "vendor_gstin": "27AAJFV2209K1ZA",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "VL/2026-27/5203",
+    "invoice_date": "2026-09-30",
+    "po_number": "PO-26259",
+    "taxable_value": 8749.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 1049.88,
+    "total": 9798.88,
+    "line_items": [
+     {
+      "description": "Freight, Mumbai to Delhi (per tonne)",
+      "quantity": 1,
+      "unit_price": 8749.0,
+      "amount": 8749.0,
+      "gst_rate": 12
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-003",
+   "file": "pdfs/inv-003.pdf",
+   "layout": 2,
+   "split": "test",
+   "problem": "future_date",
+   "expected_route": "review",
+   "expected_issues": [
+    "future_date"
+   ],
+   "allowed_issues": [
+    "future_date"
+   ],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Vega Logistics LLP",
+    "vendor_gstin": "27AAJFV2209K1ZY",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "VL/2026-27/7957",
+    "invoice_date": "2026-12-19",
+    "po_number": "PO-25575",
+    "taxable_value": 12446.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 1493.52,
+    "total": 13939.52,
+    "line_items": [
+     {
+      "description": "Freight, Mumbai to Delhi (per tonne)",
+      "quantity": 2,
+      "unit_price": 6223.0,
+      "amount": 12446.0,
+      "gst_rate": 12
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-004",
+   "file": "pdfs/inv-004.pdf",
+   "layout": 2,
+   "split": "test",
+   "problem": "wrong_tax_type",
+   "expected_route": "review",
+   "expected_issues": [
+    "wrong_tax_type"
+   ],
+   "allowed_issues": [
+    "wrong_tax_type"
+   ],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Lotus Electricals",
+    "vendor_gstin": "09AXLPL7725C1ZA",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "LE/26-27/7415",
+    "invoice_date": "2026-10-01",
+    "po_number": null,
+    "taxable_value": 14733.0,
+    "cgst": 1218.93,
+    "sgst": 1218.93,
+    "igst": 0.0,
+    "total": 17170.86,
+    "line_items": [
+     {
+      "description": "MCB, 32 A",
+      "quantity": 25,
+      "unit_price": 289.0,
+      "amount": 7225.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "Copper wire, 2.5 sq mm (90 m)",
+      "quantity": 1,
+      "unit_price": 3940.0,
+      "amount": 3940.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "LED panel, 36 W",
+      "quantity": 2,
+      "unit_price": 1784.0,
+      "amount": 3568.0,
+      "gst_rate": 12
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-005",
+   "file": "pdfs/inv-005.pdf",
+   "layout": 0,
+   "split": "dev",
+   "problem": "future_date",
+   "expected_route": "review",
+   "expected_issues": [
+    "future_date"
+   ],
+   "allowed_issues": [
+    "future_date"
+   ],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Vega Logistics LLP",
+    "vendor_gstin": "27AAJFV2209K1ZY",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "VL/FY27/9247",
+    "invoice_date": "2026-12-11",
+    "po_number": "PO-25896",
+    "taxable_value": 5232.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 941.76,
+    "total": 6173.76,
+    "line_items": [
+     {
+      "description": "Warehousing (per pallet-month)",
+      "quantity": 6,
+      "unit_price": 872.0,
+      "amount": 5232.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-006",
+   "file": "pdfs/inv-006.pdf",
+   "layout": 2,
+   "split": "test",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "allowed_issues": [],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Lotus Electricals",
+    "vendor_gstin": "09AXLPL7725C1ZA",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "LE/2026-27/8315",
+    "invoice_date": "2026-11-15",
+    "po_number": "PO-25004",
+    "taxable_value": 12892.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 1758.96,
+    "total": 14650.96,
+    "line_items": [
+     {
+      "description": "Copper wire, 2.5 sq mm (90 m)",
+      "quantity": 1,
+      "unit_price": 3185.0,
+      "amount": 3185.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "MCB, 32 A",
+      "quantity": 1,
+      "unit_price": 347.0,
+      "amount": 347.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "LED panel, 36 W",
+      "quantity": 6,
+      "unit_price": 1560.0,
+      "amount": 9360.0,
+      "gst_rate": 12
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-007",
+   "file": "pdfs/inv-007.pdf",
+   "layout": 0,
+   "split": "test",
+   "problem": "wrong_tax_type",
+   "expected_route": "review",
+   "expected_issues": [
+    "wrong_tax_type"
+   ],
+   "allowed_issues": [
+    "wrong_tax_type"
+   ],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Vega Logistics LLP",
+    "vendor_gstin": "27AAJFV2209K1ZY",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "VL/2026-27/4752",
+    "invoice_date": "2026-09-16",
+    "po_number": null,
+    "taxable_value": 28075.0,
+    "cgst": 2306.1,
+    "sgst": 2306.1,
+    "igst": 0.0,
+    "total": 32687.2,
+    "line_items": [
+     {
+      "description": "Freight, Mumbai to Delhi (per tonne)",
+      "quantity": 1,
+      "unit_price": 7355.0,
+      "amount": 7355.0,
+      "gst_rate": 12
+     },
+     {
+      "description": "Last-mile delivery (per drop)",
+      "quantity": 10,
+      "unit_price": 94.0,
+      "amount": 940.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "Warehousing (per pallet-month)",
+      "quantity": 20,
+      "unit_price": 989.0,
+      "amount": 19780.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-008",
+   "file": "pdfs/inv-008.pdf",
+   "layout": 3,
+   "split": "test",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "allowed_issues": [],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Pinnacle Legal Associates",
+    "vendor_gstin": "07AAKFP6643G1Z0",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "PL/26-27/3926",
+    "invoice_date": "2026-11-01",
+    "po_number": "PO-25317",
+    "taxable_value": 141632.0,
+    "cgst": 12746.88,
+    "sgst": 12746.88,
+    "igst": 0.0,
+    "total": 167125.76,
+    "line_items": [
+     {
+      "description": "Contract review",
+      "quantity": 2,
+      "unit_price": 58030.0,
+      "amount": 116060.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "Trademark filing",
+      "quantity": 2,
+      "unit_price": 12786.0,
+      "amount": 25572.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-009",
+   "file": "pdfs/inv-009.pdf",
+   "layout": 1,
+   "split": "dev",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "allowed_issues": [],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Pinnacle Legal Associates",
+    "vendor_gstin": "07AAKFP6643G1Z0",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "PL/26-27/1439",
+    "invoice_date": "2026-11-03",
+    "po_number": "PO-26809",
+    "taxable_value": 42016.0,
+    "cgst": 3781.44,
+    "sgst": 3781.44,
+    "igst": 0.0,
+    "total": 49578.88,
+    "line_items": [
+     {
+      "description": "Contract review",
+      "quantity": 1,
+      "unit_price": 27274.0,
+      "amount": 27274.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "Trademark filing",
+      "quantity": 1,
+      "unit_price": 14742.0,
+      "amount": 14742.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-010",
+   "file": "pdfs/inv-010.pdf",
+   "layout": 0,
+   "split": "test",
+   "problem": "tax_math",
+   "expected_route": "review",
+   "expected_issues": [
+    "tax_math"
+   ],
+   "allowed_issues": [
+    "tax_math",
+    "total_math"
+   ],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Pinnacle Legal Associates",
+    "vendor_gstin": "07AAKFP6643G1Z0",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "PL/26-27/697",
+    "invoice_date": "2026-11-09",
+    "po_number": "PO-24813",
+    "taxable_value": 85886.0,
+    "cgst": 5101.63,
+    "sgst": 5101.63,
+    "igst": 0.0,
+    "total": 96089.26,
+    "line_items": [
+     {
+      "description": "Trademark filing",
+      "quantity": 3,
+      "unit_price": 14700.0,
+      "amount": 44100.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "Contract review",
+      "quantity": 1,
+      "unit_price": 41786.0,
+      "amount": 41786.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-011",
+   "file": "pdfs/inv-011.pdf",
+   "layout": 0,
+   "split": "test",
+   "problem": "invalid_gstin",
+   "expected_route": "review",
+   "expected_issues": [
+    "invalid_gstin"
+   ],
+   "allowed_issues": [
+    "invalid_gstin"
+   ],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Saffron Caterers",
+    "vendor_gstin": "07BCKPS1180L1ZA",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "SC/2026-27/2429",
+    "invoice_date": "2026-10-15",
+    "po_number": "PO-24959",
+    "taxable_value": 9446.0,
+    "cgst": 236.15,
+    "sgst": 236.15,
+    "igst": 0.0,
+    "total": 9918.3,
+    "line_items": [
+     {
+      "description": "Tea and snacks (per person)",
+      "quantity": 50,
+      "unit_price": 91.0,
+      "amount": 4550.0,
+      "gst_rate": 5
+     },
+     {
+      "description": "Working lunch (per plate)",
+      "quantity": 12,
+      "unit_price": 408.0,
+      "amount": 4896.0,
+      "gst_rate": 5
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-012",
+   "file": "pdfs/inv-012.pdf",
+   "layout": 1,
+   "split": "test",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "allowed_issues": [],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Greenleaf Housekeeping",
+    "vendor_gstin": "19ACFPG2257J1ZJ",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "GH/26-27/474",
+    "invoice_date": "2026-09-16",
+    "po_number": "PO-25247",
+    "taxable_value": 32991.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 5938.38,
+    "total": 38929.38,
+    "line_items": [
+     {
+      "description": "Floor deep-cleaning",
+      "quantity": 3,
+      "unit_price": 10997.0,
+      "amount": 32991.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-013",
+   "file": "pdfs/inv-013.pdf",
+   "layout": 3,
+   "split": "dev",
+   "problem": "missing_field",
+   "expected_route": "review",
+   "expected_issues": [
+    "missing_field"
+   ],
+   "allowed_issues": [
+    "missing_field"
+   ],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Coastal Security Agency",
+    "vendor_gstin": "32AAHFC3398N1Z2",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": null,
+    "invoice_date": "2026-09-28",
+    "po_number": "PO-26212",
+    "taxable_value": 48180.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 8672.4,
+    "total": 56852.4,
+    "line_items": [
+     {
+      "description": "Security guard (per guard-month)",
+      "quantity": 2,
+      "unit_price": 22805.0,
+      "amount": 45610.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "CCTV maintenance visit",
+      "quantity": 1,
+      "unit_price": 2570.0,
+      "amount": 2570.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-014",
+   "file": "pdfs/inv-014.pdf",
+   "layout": 0,
+   "split": "test",
+   "problem": "line_math",
+   "expected_route": "review",
+   "expected_issues": [
+    "line_math"
+   ],
+   "allowed_issues": [
+    "line_math",
+    "subtotal_math"
+   ],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Nimbus Cloud Services Pvt Ltd",
+    "vendor_gstin": "29AAFCN7710Q1ZS",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "NC/26-27/6126",
+    "invoice_date": "2026-09-17",
+    "po_number": "PO-26309",
+    "taxable_value": 348588.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 62745.84,
+    "total": 411333.84,
+    "line_items": [
+     {
+      "description": "Managed database, monthly",
+      "quantity": 1,
+      "unit_price": 39212.0,
+      "amount": 39212.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "Cloud compute, monthly",
+      "quantity": 3,
+      "unit_price": 83068.0,
+      "amount": 250204.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "Object storage, 5 TB",
+      "quantity": 3,
+      "unit_price": 19724.0,
+      "amount": 59172.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-015",
+   "file": "pdfs/inv-015.pdf",
+   "layout": 3,
+   "split": "test",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "allowed_issues": [],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Greenleaf Housekeeping",
+    "vendor_gstin": "19ACFPG2257J1ZJ",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "GH/2026-27/3995",
+    "invoice_date": "2026-10-08",
+    "po_number": "PO-24698",
+    "taxable_value": 57258.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 10306.44,
+    "total": 67564.44,
+    "line_items": [
+     {
+      "description": "Pest control service",
+      "quantity": 2,
+      "unit_price": 4951.0,
+      "amount": 9902.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "Floor deep-cleaning",
+      "quantity": 2,
+      "unit_price": 13692.0,
+      "amount": 27384.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "Housekeeping staff (per person-month)",
+      "quantity": 1,
+      "unit_price": 19972.0,
+      "amount": 19972.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-016",
+   "file": "pdfs/inv-016.pdf",
+   "layout": 1,
+   "split": "test",
+   "problem": "stale_date",
+   "expected_route": "review",
+   "expected_issues": [
+    "stale_date"
+   ],
+   "allowed_issues": [
+    "stale_date"
+   ],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Orbit IT Hardware Pvt Ltd",
+    "vendor_gstin": "36AABCO9934P1ZO",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "OI/2026-27/5221",
+    "invoice_date": "2025-10-21",
+    "po_number": null,
+    "taxable_value": 231530.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 41675.4,
+    "total": 273205.4,
+    "line_items": [
+     {
+      "description": "Network switch, 24-port",
+      "quantity": 3,
+      "unit_price": 19377.0,
+      "amount": 58131.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "USB-C dock",
+      "quantity": 2,
+      "unit_price": 8408.0,
+      "amount": 16816.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "27-inch monitor",
+      "quantity": 1,
+      "unit_price": 21699.0,
+      "amount": 21699.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "Laptop, 16 GB RAM",
+      "quantity": 2,
+      "unit_price": 67442.0,
+      "amount": 134884.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-017",
+   "file": "pdfs/inv-017.pdf",
+   "layout": 3,
+   "split": "dev",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "allowed_issues": [],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Greenleaf Housekeeping",
+    "vendor_gstin": "19ACFPG2257J1ZJ",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "GH/26-27/4508",
+    "invoice_date": "2026-09-21",
+    "po_number": "PO-25755",
+    "taxable_value": 31722.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 5709.96,
+    "total": 37431.96,
+    "line_items": [
+     {
+      "description": "Floor deep-cleaning",
+      "quantity": 1,
+      "unit_price": 9248.0,
+      "amount": 9248.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "Pest control service",
+      "quantity": 1,
+      "unit_price": 4002.0,
+      "amount": 4002.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "Housekeeping staff (per person-month)",
+      "quantity": 1,
+      "unit_price": 18472.0,
+      "amount": 18472.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-018",
+   "file": "pdfs/inv-018.pdf",
+   "layout": 0,
+   "split": "test",
+   "problem": "line_math",
+   "expected_route": "review",
+   "expected_issues": [
+    "line_math"
+   ],
+   "allowed_issues": [
+    "line_math",
+    "subtotal_math"
+   ],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Orbit IT Hardware Pvt Ltd",
+    "vendor_gstin": "36AABCO9934P1ZO",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "OI/2026-27/6003",
+    "invoice_date": "2026-10-11",
+    "po_number": "PO-24042",
+    "taxable_value": 170766.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 30737.88,
+    "total": 201503.88,
+    "line_items": [
+     {
+      "description": "USB-C dock",
+      "quantity": 3,
+      "unit_price": 7295.0,
+      "amount": 22135.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "Laptop, 16 GB RAM",
+      "quantity": 1,
+      "unit_price": 77050.0,
+      "amount": 77050.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "Network switch, 24-port",
+      "quantity": 1,
+      "unit_price": 25894.0,
+      "amount": 25894.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "27-inch monitor",
+      "quantity": 3,
+      "unit_price": 15229.0,
+      "amount": 45687.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-019",
+   "file": "pdfs/inv-019.pdf",
+   "layout": 1,
+   "split": "test",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "allowed_issues": [],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Greenleaf Housekeeping",
+    "vendor_gstin": "19ACFPG2257J1ZJ",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "GH/FY27/7738",
+    "invoice_date": "2026-11-03",
+    "po_number": "PO-25918",
+    "taxable_value": 19862.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 3575.16,
+    "total": 23437.16,
+    "line_items": [
+     {
+      "description": "Housekeeping staff (per person-month)",
+      "quantity": 1,
+      "unit_price": 19862.0,
+      "amount": 19862.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-020",
+   "file": "pdfs/inv-020.pdf",
+   "layout": 1,
+   "split": "test",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "allowed_issues": [],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Greenleaf Housekeeping",
+    "vendor_gstin": "19ACFPG2257J1ZJ",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "GH/2026-27/2715",
+    "invoice_date": "2026-09-12",
+    "po_number": null,
+    "taxable_value": 12758.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 2296.44,
+    "total": 15054.44,
+    "line_items": [
+     {
+      "description": "Floor deep-cleaning",
+      "quantity": 1,
+      "unit_price": 9191.0,
+      "amount": 9191.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "Pest control service",
+      "quantity": 1,
+      "unit_price": 3567.0,
+      "amount": 3567.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-021",
+   "file": "pdfs/inv-021.pdf",
+   "layout": 0,
+   "split": "dev",
+   "problem": "missing_field",
+   "expected_route": "review",
+   "expected_issues": [
+    "missing_field"
+   ],
+   "allowed_issues": [
+    "missing_field"
+   ],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Orbit IT Hardware Pvt Ltd",
+    "vendor_gstin": "36AABCO9934P1ZO",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": null,
+    "invoice_date": "2026-11-09",
+    "po_number": null,
+    "taxable_value": 142821.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 25707.78,
+    "total": 168528.78,
+    "line_items": [
+     {
+      "description": "Laptop, 16 GB RAM",
+      "quantity": 1,
+      "unit_price": 58528.0,
+      "amount": 58528.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "Network switch, 24-port",
+      "quantity": 1,
+      "unit_price": 30234.0,
+      "amount": 30234.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "USB-C dock",
+      "quantity": 3,
+      "unit_price": 10743.0,
+      "amount": 32229.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "27-inch monitor",
+      "quantity": 1,
+      "unit_price": 21830.0,
+      "amount": 21830.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-022",
+   "file": "pdfs/inv-022.pdf",
+   "layout": 1,
+   "split": "test",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "allowed_issues": [],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Vega Logistics LLP",
+    "vendor_gstin": "27AAJFV2209K1ZY",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "VL/FY27/8005",
+    "invoice_date": "2026-09-08",
+    "po_number": null,
+    "taxable_value": 22607.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 2718.72,
+    "total": 25325.72,
+    "line_items": [
+     {
+      "description": "Freight, Mumbai to Delhi (per tonne)",
+      "quantity": 3,
+      "unit_price": 7503.0,
+      "amount": 22509.0,
+      "gst_rate": 12
+     },
+     {
+      "description": "Last-mile delivery (per drop)",
+      "quantity": 1,
+      "unit_price": 98.0,
+      "amount": 98.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-023",
+   "file": "pdfs/inv-023.pdf",
+   "layout": 1,
+   "split": "test",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "allowed_issues": [],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Orbit IT Hardware Pvt Ltd",
+    "vendor_gstin": "36AABCO9934P1ZO",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "OI/26-27/2766",
+    "invoice_date": "2026-10-12",
+    "po_number": null,
+    "taxable_value": 35776.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 6439.68,
+    "total": 42215.68,
+    "line_items": [
+     {
+      "description": "27-inch monitor",
+      "quantity": 2,
+      "unit_price": 17888.0,
+      "amount": 35776.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-024",
+   "file": "pdfs/inv-024.pdf",
+   "layout": 0,
+   "split": "test",
+   "problem": "total_math",
+   "expected_route": "review",
+   "expected_issues": [
+    "total_math"
+   ],
+   "allowed_issues": [
+    "total_math"
+   ],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Kaveri Print House",
+    "vendor_gstin": "33ABHPK6630D1Z1",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "KP/26-27/4582",
+    "invoice_date": "2026-10-27",
+    "po_number": null,
+    "taxable_value": 103239.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 17887.68,
+    "total": 120826.68,
+    "line_items": [
+     {
+      "description": "Visiting cards, box of 100",
+      "quantity": 50,
+      "unit_price": 231.0,
+      "amount": 11550.0,
+      "gst_rate": 12
+     },
+     {
+      "description": "Brochures, A4 tri-fold",
+      "quantity": 3,
+      "unit_price": 13.0,
+      "amount": 39.0,
+      "gst_rate": 12
+     },
+     {
+      "description": "Standee, roll-up",
+      "quantity": 50,
+      "unit_price": 1833.0,
+      "amount": 91650.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-025",
+   "file": "pdfs/inv-025.pdf",
+   "layout": 2,
+   "split": "dev",
+   "problem": "over_limit",
+   "expected_route": "review",
+   "expected_issues": [
+    "over_limit"
+   ],
+   "allowed_issues": [
+    "over_limit"
+   ],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Kaveri Print House",
+    "vendor_gstin": "33ABHPK6630D1Z1",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "KP/FY27/3783",
+    "invoice_date": "2026-09-06",
+    "po_number": "PO-24506",
+    "taxable_value": 535680.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 64281.6,
+    "total": 599961.6,
+    "line_items": [
+     {
+      "description": "Visiting cards, box of 100",
+      "quantity": 1920,
+      "unit_price": 279.0,
+      "amount": 535680.0,
+      "gst_rate": 12
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-026",
+   "file": "pdfs/inv-026.pdf",
+   "layout": 2,
+   "split": "test",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "allowed_issues": [],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Kaveri Print House",
+    "vendor_gstin": "33ABHPK6630D1Z1",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "KP/FY27/5145",
+    "invoice_date": "2026-09-21",
+    "po_number": null,
+    "taxable_value": 525.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 63.0,
+    "total": 588.0,
+    "line_items": [
+     {
+      "description": "Brochures, A4 tri-fold",
+      "quantity": 25,
+      "unit_price": 21.0,
+      "amount": 525.0,
+      "gst_rate": 12
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-027",
+   "file": "pdfs/inv-027.pdf",
+   "layout": 3,
+   "split": "test",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "allowed_issues": [],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Greenleaf Housekeeping",
+    "vendor_gstin": "19ACFPG2257J1ZJ",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "GH/26-27/7457",
+    "invoice_date": "2026-10-22",
+    "po_number": "PO-25068",
+    "taxable_value": 69703.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 12546.54,
+    "total": 82249.54,
+    "line_items": [
+     {
+      "description": "Housekeeping staff (per person-month)",
+      "quantity": 3,
+      "unit_price": 17828.0,
+      "amount": 53484.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "Floor deep-cleaning",
+      "quantity": 1,
+      "unit_price": 9364.0,
+      "amount": 9364.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "Pest control service",
+      "quantity": 1,
+      "unit_price": 6855.0,
+      "amount": 6855.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-028",
+   "file": "pdfs/inv-028.pdf",
+   "layout": 0,
+   "split": "test",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "allowed_issues": [],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Deccan Packaging Industries",
+    "vendor_gstin": "24AAEFD4471R1Z1",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "DP/FY27/1372",
+    "invoice_date": "2026-09-15",
+    "po_number": null,
+    "taxable_value": 4819.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 865.02,
+    "total": 5684.02,
+    "line_items": [
+     {
+      "description": "Corrugated boxes, 5-ply",
+      "quantity": 1,
+      "unit_price": 40.0,
+      "amount": 40.0,
+      "gst_rate": 12
+     },
+     {
+      "description": "Stretch film roll",
+      "quantity": 6,
+      "unit_price": 773.0,
+      "amount": 4638.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "Packing tape, 48 mm",
+      "quantity": 3,
+      "unit_price": 47.0,
+      "amount": 141.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-029",
+   "file": "pdfs/inv-029.pdf",
+   "layout": 2,
+   "split": "dev",
+   "problem": "over_limit",
+   "expected_route": "review",
+   "expected_issues": [
+    "over_limit"
+   ],
+   "allowed_issues": [
+    "over_limit"
+   ],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Orbit IT Hardware Pvt Ltd",
+    "vendor_gstin": "36AABCO9934P1ZO",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "OI/26-27/5322",
+    "invoice_date": "2026-10-04",
+    "po_number": "PO-24240",
+    "taxable_value": 2394555.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 431019.9,
+    "total": 2825574.9,
+    "line_items": [
+     {
+      "description": "Network switch, 24-port",
+      "quantity": 120,
+      "unit_price": 19772.0,
+      "amount": 2372640.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "27-inch monitor",
+      "quantity": 1,
+      "unit_price": 21915.0,
+      "amount": 21915.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-030",
+   "file": "pdfs/inv-030.pdf",
+   "layout": 1,
+   "split": "test",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "allowed_issues": [],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Sharma Office Supplies",
+    "vendor_gstin": "07AKJPS4821M1ZN",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "SO/26-27/2759",
+    "invoice_date": "2026-10-16",
+    "po_number": null,
+    "taxable_value": 24168.0,
+    "cgst": 2175.12,
+    "sgst": 2175.12,
+    "igst": 0.0,
+    "total": 28518.24,
+    "line_items": [
+     {
+      "description": "Stapler, heavy duty",
+      "quantity": 12,
+      "unit_price": 634.0,
+      "amount": 7608.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "A4 copier paper, 500 sheets",
+      "quantity": 20,
+      "unit_price": 828.0,
+      "amount": 16560.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-031",
+   "file": "pdfs/inv-031.pdf",
+   "layout": 3,
+   "split": "test",
+   "problem": "wrong_tax_type",
+   "expected_route": "review",
+   "expected_issues": [
+    "wrong_tax_type"
+   ],
+   "allowed_issues": [
+    "wrong_tax_type"
+   ],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Brightline Facility Services",
+    "vendor_gstin": "06AAGCB5512H1ZY",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "BF/FY27/2491",
+    "invoice_date": "2026-11-05",
+    "po_number": "PO-25901",
+    "taxable_value": 40896.0,
+    "cgst": 3680.64,
+    "sgst": 3680.64,
+    "igst": 0.0,
+    "total": 48257.28,
+    "line_items": [
+     {
+      "description": "Housekeeping staff (per person-month)",
+      "quantity": 2,
+      "unit_price": 20448.0,
+      "amount": 40896.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-032",
+   "file": "pdfs/inv-032.pdf",
+   "layout": 0,
+   "split": "test",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "allowed_issues": [],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Greenleaf Housekeeping",
+    "vendor_gstin": "19ACFPG2257J1ZJ",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "GH/26-27/6636",
+    "invoice_date": "2026-11-13",
+    "po_number": "PO-26179",
+    "taxable_value": 84143.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 15145.74,
+    "total": 99288.74,
+    "line_items": [
+     {
+      "description": "Housekeeping staff (per person-month)",
+      "quantity": 2,
+      "unit_price": 20781.0,
+      "amount": 41562.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "Pest control service",
+      "quantity": 3,
+      "unit_price": 4579.0,
+      "amount": 13737.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "Floor deep-cleaning",
+      "quantity": 2,
+      "unit_price": 14422.0,
+      "amount": 28844.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-033",
+   "file": "pdfs/inv-033.pdf",
+   "layout": 3,
+   "split": "dev",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "allowed_issues": [],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Lotus Electricals",
+    "vendor_gstin": "09AXLPL7725C1ZA",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "LE/FY27/3353",
+    "invoice_date": "2026-11-09",
+    "po_number": "PO-24259",
+    "taxable_value": 5896.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 908.04,
+    "total": 6804.04,
+    "line_items": [
+     {
+      "description": "Copper wire, 2.5 sq mm (90 m)",
+      "quantity": 1,
+      "unit_price": 3342.0,
+      "amount": 3342.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "LED panel, 36 W",
+      "quantity": 2,
+      "unit_price": 1277.0,
+      "amount": 2554.0,
+      "gst_rate": 12
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-034",
+   "file": "pdfs/inv-034.pdf",
+   "layout": 2,
+   "split": "test",
+   "problem": "stale_date",
+   "expected_route": "review",
+   "expected_issues": [
+    "stale_date"
+   ],
+   "allowed_issues": [
+    "stale_date"
+   ],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Sharma Office Supplies",
+    "vendor_gstin": "07AKJPS4821M1ZN",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "SO/26-27/9039",
+    "invoice_date": "2026-04-06",
+    "po_number": null,
+    "taxable_value": 5012.0,
+    "cgst": 377.28,
+    "sgst": 377.28,
+    "igst": 0.0,
+    "total": 5766.56,
+    "line_items": [
+     {
+      "description": "A4 copier paper, 500 sheets",
+      "quantity": 1,
+      "unit_price": 464.0,
+      "amount": 464.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "Box files",
+      "quantity": 20,
+      "unit_price": 123.0,
+      "amount": 2460.0,
+      "gst_rate": 12
+     },
+     {
+      "description": "Ball pens, box of 50",
+      "quantity": 6,
+      "unit_price": 348.0,
+      "amount": 2088.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-035",
+   "file": "pdfs/inv-035.pdf",
+   "layout": 1,
+   "split": "test",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "allowed_issues": [],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Vega Logistics LLP",
+    "vendor_gstin": "27AAJFV2209K1ZY",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "VL/26-27/9648",
+    "invoice_date": "2026-09-28",
+    "po_number": null,
+    "taxable_value": 13395.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 2411.1,
+    "total": 15806.1,
+    "line_items": [
+     {
+      "description": "Warehousing (per pallet-month)",
+      "quantity": 10,
+      "unit_price": 1062.0,
+      "amount": 10620.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "Last-mile delivery (per drop)",
+      "quantity": 25,
+      "unit_price": 111.0,
+      "amount": 2775.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-036",
+   "file": "pdfs/inv-036.pdf",
+   "layout": 2,
+   "split": "test",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "allowed_issues": [],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Greenleaf Housekeeping",
+    "vendor_gstin": "19ACFPG2257J1ZJ",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "GH/26-27/4488",
+    "invoice_date": "2026-09-07",
+    "po_number": null,
+    "taxable_value": 51406.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 9253.08,
+    "total": 60659.08,
+    "line_items": [
+     {
+      "description": "Pest control service",
+      "quantity": 2,
+      "unit_price": 6884.0,
+      "amount": 13768.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "Housekeeping staff (per person-month)",
+      "quantity": 2,
+      "unit_price": 18819.0,
+      "amount": 37638.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-037",
+   "file": "pdfs/inv-037.pdf",
+   "layout": 2,
+   "split": "dev",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "allowed_issues": [],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Greenleaf Housekeeping",
+    "vendor_gstin": "19ACFPG2257J1ZJ",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "GH/26-27/9700",
+    "invoice_date": "2026-10-21",
+    "po_number": null,
+    "taxable_value": 27234.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 4902.12,
+    "total": 32136.12,
+    "line_items": [
+     {
+      "description": "Floor deep-cleaning",
+      "quantity": 2,
+      "unit_price": 13617.0,
+      "amount": 27234.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-038",
+   "file": "pdfs/inv-038.pdf",
+   "layout": 1,
+   "split": "test",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "allowed_issues": [],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Sharma Office Supplies",
+    "vendor_gstin": "07AKJPS4821M1ZN",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "SO/FY27/5766",
+    "invoice_date": "2026-10-11",
+    "po_number": "PO-24604",
+    "taxable_value": 15580.0,
+    "cgst": 1354.32,
+    "sgst": 1354.32,
+    "igst": 0.0,
+    "total": 18288.64,
+    "line_items": [
+     {
+      "description": "Box files",
+      "quantity": 12,
+      "unit_price": 133.0,
+      "amount": 1596.0,
+      "gst_rate": 12
+     },
+     {
+      "description": "Ball pens, box of 50",
+      "quantity": 12,
+      "unit_price": 276.0,
+      "amount": 3312.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "Stapler, heavy duty",
+      "quantity": 4,
+      "unit_price": 598.0,
+      "amount": 2392.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "A4 copier paper, 500 sheets",
+      "quantity": 20,
+      "unit_price": 414.0,
+      "amount": 8280.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-039",
+   "file": "pdfs/inv-039.pdf",
+   "layout": 2,
+   "split": "test",
+   "problem": "invalid_gstin",
+   "expected_route": "review",
+   "expected_issues": [
+    "invalid_gstin"
+   ],
+   "allowed_issues": [
+    "invalid_gstin"
+   ],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Vega Logistics LLP",
+    "vendor_gstin": "27AAJFV2209K1ZA",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "VL/2026-27/270",
+    "invoice_date": "2026-09-15",
+    "po_number": "PO-24355",
+    "taxable_value": 24399.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 3116.88,
+    "total": 27515.88,
+    "line_items": [
+     {
+      "description": "Last-mile delivery (per drop)",
+      "quantity": 25,
+      "unit_price": 126.0,
+      "amount": 3150.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "Freight, Mumbai to Delhi (per tonne)",
+      "quantity": 3,
+      "unit_price": 7083.0,
+      "amount": 21249.0,
+      "gst_rate": 12
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-040",
+   "file": "pdfs/inv-040.pdf",
+   "layout": 3,
+   "split": "test",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "allowed_issues": [],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Deccan Packaging Industries",
+    "vendor_gstin": "24AAEFD4471R1Z1",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "DP/26-27/6422",
+    "invoice_date": "2026-10-10",
+    "po_number": "PO-25300",
+    "taxable_value": 120.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 21.6,
+    "total": 141.6,
+    "line_items": [
+     {
+      "description": "Packing tape, 48 mm",
+      "quantity": 3,
+      "unit_price": 40.0,
+      "amount": 120.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-041",
+   "file": "pdfs/inv-041.pdf",
+   "layout": 0,
+   "split": "dev",
+   "problem": "missing_field",
+   "expected_route": "review",
+   "expected_issues": [
+    "missing_field"
+   ],
+   "allowed_issues": [
+    "missing_field"
+   ],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Pinnacle Legal Associates",
+    "vendor_gstin": "07AAKFP6643G1Z0",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": null,
+    "invoice_date": "2026-10-31",
+    "po_number": null,
+    "taxable_value": 40914.0,
+    "cgst": 3682.26,
+    "sgst": 3682.26,
+    "igst": 0.0,
+    "total": 48278.52,
+    "line_items": [
+     {
+      "description": "Contract review",
+      "quantity": 1,
+      "unit_price": 40914.0,
+      "amount": 40914.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-042",
+   "file": "pdfs/inv-042.pdf",
+   "layout": 1,
+   "split": "test",
+   "problem": "total_math",
+   "expected_route": "review",
+   "expected_issues": [
+    "total_math"
+   ],
+   "allowed_issues": [
+    "total_math"
+   ],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Lotus Electricals",
+    "vendor_gstin": "09AXLPL7725C1ZA",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "LE/FY27/5183",
+    "invoice_date": "2026-10-14",
+    "po_number": "PO-26591",
+    "taxable_value": 41844.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 5897.52,
+    "total": 47441.52,
+    "line_items": [
+     {
+      "description": "Copper wire, 2.5 sq mm (90 m)",
+      "quantity": 1,
+      "unit_price": 3604.0,
+      "amount": 3604.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "MCB, 32 A",
+      "quantity": 50,
+      "unit_price": 220.0,
+      "amount": 11000.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "LED panel, 36 W",
+      "quantity": 20,
+      "unit_price": 1362.0,
+      "amount": 27240.0,
+      "gst_rate": 12
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-043",
+   "file": "pdfs/inv-043.pdf",
+   "layout": 0,
+   "split": "test",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "allowed_issues": [],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Nimbus Cloud Services Pvt Ltd",
+    "vendor_gstin": "29AAFCN7710Q1ZS",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "NC/FY27/8022",
+    "invoice_date": "2026-11-14",
+    "po_number": null,
+    "taxable_value": 55272.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 9948.96,
+    "total": 65220.96,
+    "line_items": [
+     {
+      "description": "Managed database, monthly",
+      "quantity": 3,
+      "unit_price": 18424.0,
+      "amount": 55272.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-044",
+   "file": "pdfs/inv-044.pdf",
+   "layout": 2,
+   "split": "test",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "allowed_issues": [],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Deccan Packaging Industries",
+    "vendor_gstin": "24AAEFD4471R1Z1",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "DP/FY27/4030",
+    "invoice_date": "2026-11-10",
+    "po_number": "PO-24380",
+    "taxable_value": 222.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 26.64,
+    "total": 248.64,
+    "line_items": [
+     {
+      "description": "Corrugated boxes, 5-ply",
+      "quantity": 6,
+      "unit_price": 37.0,
+      "amount": 222.0,
+      "gst_rate": 12
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-045",
+   "file": "pdfs/inv-045.pdf",
+   "layout": 3,
+   "split": "dev",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "allowed_issues": [],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Pinnacle Legal Associates",
+    "vendor_gstin": "07AAKFP6643G1Z0",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "PL/FY27/8175",
+    "invoice_date": "2026-10-26",
+    "po_number": null,
+    "taxable_value": 90070.0,
+    "cgst": 8106.3,
+    "sgst": 8106.3,
+    "igst": 0.0,
+    "total": 106282.6,
+    "line_items": [
+     {
+      "description": "Contract review",
+      "quantity": 3,
+      "unit_price": 25541.0,
+      "amount": 76623.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "Trademark filing",
+      "quantity": 1,
+      "unit_price": 13447.0,
+      "amount": 13447.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-046",
+   "file": "pdfs/inv-046.pdf",
+   "layout": 0,
+   "split": "test",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "allowed_issues": [],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Saffron Caterers",
+    "vendor_gstin": "07BCKPS1180L1Z6",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "SC/2026-27/5029",
+    "invoice_date": "2026-10-08",
+    "po_number": null,
+    "taxable_value": 5004.0,
+    "cgst": 125.1,
+    "sgst": 125.1,
+    "igst": 0.0,
+    "total": 5254.2,
+    "line_items": [
+     {
+      "description": "Working lunch (per plate)",
+      "quantity": 12,
+      "unit_price": 417.0,
+      "amount": 5004.0,
+      "gst_rate": 5
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-047",
+   "file": "pdfs/inv-047.pdf",
+   "layout": 3,
+   "split": "test",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "allowed_issues": [],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Lotus Electricals",
+    "vendor_gstin": "09AXLPL7725C1ZA",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "LE/2026-27/6396",
+    "invoice_date": "2026-10-02",
+    "po_number": null,
+    "taxable_value": 2378.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 285.36,
+    "total": 2663.36,
+    "line_items": [
+     {
+      "description": "LED panel, 36 W",
+      "quantity": 2,
+      "unit_price": 1189.0,
+      "amount": 2378.0,
+      "gst_rate": 12
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-048",
+   "file": "pdfs/inv-048.pdf",
+   "layout": 1,
+   "split": "test",
+   "problem": "over_limit",
+   "expected_route": "review",
+   "expected_issues": [
+    "over_limit"
+   ],
+   "allowed_issues": [
+    "over_limit"
+   ],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Saffron Caterers",
+    "vendor_gstin": "07BCKPS1180L1Z6",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "SC/FY27/6897",
+    "invoice_date": "2026-09-29",
+    "po_number": "PO-25071",
+    "taxable_value": 563200.0,
+    "cgst": 14080.0,
+    "sgst": 14080.0,
+    "igst": 0.0,
+    "total": 591360.0,
+    "line_items": [
+     {
+      "description": "Working lunch (per plate)",
+      "quantity": 1600,
+      "unit_price": 352.0,
+      "amount": 563200.0,
+      "gst_rate": 5
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-049",
+   "file": "pdfs/inv-049.pdf",
+   "layout": 0,
+   "split": "dev",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "allowed_issues": [],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Coastal Security Agency",
+    "vendor_gstin": "32AAHFC3398N1Z2",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "CS/26-27/5802",
+    "invoice_date": "2026-11-02",
+    "po_number": null,
+    "taxable_value": 74197.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 13355.46,
+    "total": 87552.46,
+    "line_items": [
+     {
+      "description": "CCTV maintenance visit",
+      "quantity": 1,
+      "unit_price": 3106.0,
+      "amount": 3106.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "Security guard (per guard-month)",
+      "quantity": 3,
+      "unit_price": 23697.0,
+      "amount": 71091.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-050",
+   "file": "pdfs/inv-050.pdf",
+   "layout": 2,
+   "split": "test",
+   "problem": "future_date",
+   "expected_route": "review",
+   "expected_issues": [
+    "future_date"
+   ],
+   "allowed_issues": [
+    "future_date"
+   ],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Pinnacle Legal Associates",
+    "vendor_gstin": "07AAKFP6643G1Z0",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "PL/2026-27/4745",
+    "invoice_date": "2026-12-11",
+    "po_number": "PO-24284",
+    "taxable_value": 150359.0,
+    "cgst": 13532.31,
+    "sgst": 13532.31,
+    "igst": 0.0,
+    "total": 177423.62,
+    "line_items": [
+     {
+      "description": "Trademark filing",
+      "quantity": 2,
+      "unit_price": 12955.0,
+      "amount": 25910.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "Contract review",
+      "quantity": 3,
+      "unit_price": 41483.0,
+      "amount": 124449.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-051",
+   "file": "pdfs/inv-051.pdf",
+   "layout": 1,
+   "split": "test",
+   "problem": "stale_date",
+   "expected_route": "review",
+   "expected_issues": [
+    "stale_date"
+   ],
+   "allowed_issues": [
+    "stale_date"
+   ],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Deccan Packaging Industries",
+    "vendor_gstin": "24AAEFD4471R1Z1",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "DP/26-27/9425",
+    "invoice_date": "2026-03-11",
+    "po_number": null,
+    "taxable_value": 1844.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 262.92,
+    "total": 2106.92,
+    "line_items": [
+     {
+      "description": "Corrugated boxes, 5-ply",
+      "quantity": 25,
+      "unit_price": 46.0,
+      "amount": 1150.0,
+      "gst_rate": 12
+     },
+     {
+      "description": "Stretch film roll",
+      "quantity": 1,
+      "unit_price": 694.0,
+      "amount": 694.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-052",
+   "file": "pdfs/inv-052.pdf",
+   "layout": 0,
+   "split": "test",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "allowed_issues": [],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Coastal Security Agency",
+    "vendor_gstin": "32AAHFC3398N1Z2",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "CS/2026-27/9845",
+    "invoice_date": "2026-10-19",
+    "po_number": "PO-25392",
+    "taxable_value": 47320.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 8517.6,
+    "total": 55837.6,
+    "line_items": [
+     {
+      "description": "Security guard (per guard-month)",
+      "quantity": 2,
+      "unit_price": 22006.0,
+      "amount": 44012.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "CCTV maintenance visit",
+      "quantity": 1,
+      "unit_price": 3308.0,
+      "amount": 3308.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-053",
+   "file": "pdfs/inv-053.pdf",
+   "layout": 2,
+   "split": "dev",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "allowed_issues": [],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Lotus Electricals",
+    "vendor_gstin": "09AXLPL7725C1ZA",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "LE/FY27/272",
+    "invoice_date": "2026-09-26",
+    "po_number": "PO-26990",
+    "taxable_value": 77050.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 10128.0,
+    "total": 87178.0,
+    "line_items": [
+     {
+      "description": "LED panel, 36 W",
+      "quantity": 50,
+      "unit_price": 1247.0,
+      "amount": 62350.0,
+      "gst_rate": 12
+     },
+     {
+      "description": "MCB, 32 A",
+      "quantity": 50,
+      "unit_price": 294.0,
+      "amount": 14700.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-054",
+   "file": "pdfs/inv-054.pdf",
+   "layout": 2,
+   "split": "test",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "allowed_issues": [],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Coastal Security Agency",
+    "vendor_gstin": "32AAHFC3398N1Z2",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "CS/26-27/4484",
+    "invoice_date": "2026-11-15",
+    "po_number": "PO-24733",
+    "taxable_value": 3537.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 636.66,
+    "total": 4173.66,
+    "line_items": [
+     {
+      "description": "CCTV maintenance visit",
+      "quantity": 1,
+      "unit_price": 3537.0,
+      "amount": 3537.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-055",
+   "file": "pdfs/inv-055.pdf",
+   "layout": 3,
+   "split": "test",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "allowed_issues": [],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Nimbus Cloud Services Pvt Ltd",
+    "vendor_gstin": "29AAFCN7710Q1ZS",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "NC/FY27/9486",
+    "invoice_date": "2026-11-05",
+    "po_number": null,
+    "taxable_value": 108708.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 19567.44,
+    "total": 128275.44,
+    "line_items": [
+     {
+      "description": "Cloud compute, monthly",
+      "quantity": 1,
+      "unit_price": 63809.0,
+      "amount": 63809.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "Managed database, monthly",
+      "quantity": 1,
+      "unit_price": 34983.0,
+      "amount": 34983.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "Object storage, 5 TB",
+      "quantity": 1,
+      "unit_price": 9916.0,
+      "amount": 9916.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-056",
+   "file": "pdfs/inv-056.pdf",
+   "layout": 1,
+   "split": "test",
+   "problem": "tax_math",
+   "expected_route": "review",
+   "expected_issues": [
+    "tax_math"
+   ],
+   "allowed_issues": [
+    "tax_math",
+    "total_math"
+   ],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Brightline Facility Services",
+    "vendor_gstin": "06AAGCB5512H1ZY",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "BF/2026-27/8501",
+    "invoice_date": "2026-09-21",
+    "po_number": "PO-26200",
+    "taxable_value": 54888.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 14819.76,
+    "total": 69707.76,
+    "line_items": [
+     {
+      "description": "Housekeeping staff (per person-month)",
+      "quantity": 2,
+      "unit_price": 19953.0,
+      "amount": 39906.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "Pest control service",
+      "quantity": 3,
+      "unit_price": 4994.0,
+      "amount": 14982.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-057",
+   "file": "pdfs/inv-057.pdf",
+   "layout": 1,
+   "split": "dev",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "allowed_issues": [],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Orbit IT Hardware Pvt Ltd",
+    "vendor_gstin": "36AABCO9934P1ZO",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "OI/26-27/4024",
+    "invoice_date": "2026-10-16",
+    "po_number": null,
+    "taxable_value": 33906.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 6103.08,
+    "total": 40009.08,
+    "line_items": [
+     {
+      "description": "USB-C dock",
+      "quantity": 1,
+      "unit_price": 6668.0,
+      "amount": 6668.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "Network switch, 24-port",
+      "quantity": 1,
+      "unit_price": 27238.0,
+      "amount": 27238.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-058",
+   "file": "pdfs/inv-058.pdf",
+   "layout": 1,
+   "split": "test",
+   "problem": "tax_math",
+   "expected_route": "review",
+   "expected_issues": [
+    "tax_math"
+   ],
+   "allowed_issues": [
+    "tax_math",
+    "total_math"
+   ],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Pinnacle Legal Associates",
+    "vendor_gstin": "07AAKFP6643G1Z0",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "PL/26-27/3685",
+    "invoice_date": "2026-09-24",
+    "po_number": "PO-25890",
+    "taxable_value": 86788.0,
+    "cgst": 11716.38,
+    "sgst": 11716.38,
+    "igst": 0.0,
+    "total": 110220.76,
+    "line_items": [
+     {
+      "description": "Trademark filing",
+      "quantity": 1,
+      "unit_price": 10888.0,
+      "amount": 10888.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "Contract review",
+      "quantity": 2,
+      "unit_price": 37950.0,
+      "amount": 75900.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-059",
+   "file": "pdfs/inv-059.pdf",
+   "layout": 3,
+   "split": "test",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "allowed_issues": [],
+   "duplicate_of": null,
+   "truth": {
+    "vendor_name": "Lotus Electricals",
+    "vendor_gstin": "09AXLPL7725C1ZA",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "LE/2026-27/9154",
+    "invoice_date": "2026-10-23",
+    "po_number": "PO-25217",
+    "taxable_value": 8987.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 1273.98,
+    "total": 10260.98,
+    "line_items": [
+     {
+      "description": "MCB, 32 A",
+      "quantity": 1,
+      "unit_price": 275.0,
+      "amount": 275.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "Copper wire, 2.5 sq mm (90 m)",
+      "quantity": 1,
+      "unit_price": 2984.0,
+      "amount": 2984.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "LED panel, 36 W",
+      "quantity": 4,
+      "unit_price": 1432.0,
+      "amount": 5728.0,
+      "gst_rate": 12
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-060",
+   "file": "pdfs/inv-060.pdf",
+   "layout": 1,
+   "split": "test",
+   "problem": "duplicate",
+   "expected_route": "reject",
+   "expected_issues": [
+    "duplicate"
+   ],
+   "allowed_issues": [
+    "duplicate"
+   ],
+   "duplicate_of": "inv-044",
+   "truth": {
+    "vendor_name": "Deccan Packaging Industries",
+    "vendor_gstin": "24AAEFD4471R1Z1",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "DP/FY27/4030",
+    "invoice_date": "2026-11-10",
+    "po_number": "PO-24380",
+    "taxable_value": 222.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 26.64,
+    "total": 248.64,
+    "line_items": [
+     {
+      "description": "Corrugated boxes, 5-ply",
+      "quantity": 6,
+      "unit_price": 37.0,
+      "amount": 222.0,
+      "gst_rate": 12
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-061",
+   "file": "pdfs/inv-061.pdf",
+   "layout": 3,
+   "split": "test",
+   "problem": "duplicate",
+   "expected_route": "reject",
+   "expected_issues": [
+    "duplicate"
+   ],
+   "allowed_issues": [
+    "duplicate"
+   ],
+   "duplicate_of": "inv-006",
+   "truth": {
+    "vendor_name": "Lotus Electricals",
+    "vendor_gstin": "09AXLPL7725C1ZA",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "LE/2026-27/8315",
+    "invoice_date": "2026-11-15",
+    "po_number": "PO-25004",
+    "taxable_value": 12892.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 1758.96,
+    "total": 14650.96,
+    "line_items": [
+     {
+      "description": "Copper wire, 2.5 sq mm (90 m)",
+      "quantity": 1,
+      "unit_price": 3185.0,
+      "amount": 3185.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "MCB, 32 A",
+      "quantity": 1,
+      "unit_price": 347.0,
+      "amount": 347.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "LED panel, 36 W",
+      "quantity": 6,
+      "unit_price": 1560.0,
+      "amount": 9360.0,
+      "gst_rate": 12
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-062",
+   "file": "pdfs/inv-062.pdf",
+   "layout": 2,
+   "split": "test",
+   "problem": "duplicate",
+   "expected_route": "reject",
+   "expected_issues": [
+    "duplicate"
+   ],
+   "allowed_issues": [
+    "duplicate"
+   ],
+   "duplicate_of": "inv-022",
+   "truth": {
+    "vendor_name": "Vega Logistics LLP",
+    "vendor_gstin": "27AAJFV2209K1ZY",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "VL/FY27/8005",
+    "invoice_date": "2026-09-08",
+    "po_number": null,
+    "taxable_value": 22607.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 2718.72,
+    "total": 25325.72,
+    "line_items": [
+     {
+      "description": "Freight, Mumbai to Delhi (per tonne)",
+      "quantity": 3,
+      "unit_price": 7503.0,
+      "amount": 22509.0,
+      "gst_rate": 12
+     },
+     {
+      "description": "Last-mile delivery (per drop)",
+      "quantity": 1,
+      "unit_price": 98.0,
+      "amount": 98.0,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-063",
+   "file": "pdfs/inv-063.pdf",
+   "layout": 2,
+   "split": "dev",
+   "problem": "duplicate",
+   "expected_route": "reject",
+   "expected_issues": [
+    "duplicate"
+   ],
+   "allowed_issues": [
+    "duplicate"
+   ],
+   "duplicate_of": "inv-033",
+   "truth": {
+    "vendor_name": "Lotus Electricals",
+    "vendor_gstin": "09AXLPL7725C1ZA",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_number": "LE/FY27/3353",
+    "invoice_date": "2026-11-09",
+    "po_number": "PO-24259",
+    "taxable_value": 5896.0,
+    "cgst": 0.0,
+    "sgst": 0.0,
+    "igst": 908.04,
+    "total": 6804.04,
+    "line_items": [
+     {
+      "description": "Copper wire, 2.5 sq mm (90 m)",
+      "quantity": 1,
+      "unit_price": 3342.0,
+      "amount": 3342.0,
+      "gst_rate": 18
+     },
+     {
+      "description": "LED panel, 36 W",
+      "quantity": 2,
+      "unit_price": 1277.0,
+      "amount": 2554.0,
+      "gst_rate": 12
+     }
+    ]
+   }
+  }
+ ]
+}

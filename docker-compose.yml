@@ -1,0 +1,45 @@
+# The whole intake stack: n8n (orchestration), the rules service, and my llm-gateway in front of Groq.
+#   GROQ_API_KEY=... docker compose up --build
+#   curl -F "data=@dataset/pdfs/inv-001.pdf" http://localhost:5678/webhook/invoice
+services:
+  intake-api:
+    build: {context: ., dockerfile: service/Dockerfile}
+    environment:
+      INTAKE_TODAY: ${INTAKE_TODAY:-}           # pin "today" for the benchmark; empty = real date (IST)
+      INTAKE_ALLOW_RESET: ${INTAKE_ALLOW_RESET:-0}
+      INTAKE_MOCK_LLM: ${INTAKE_MOCK_LLM:-0}    # 1 = offer a stand-in LLM for plumbing tests (never for results)
+    ports: ["8000:8000"]
+    volumes: [intake-data:/data]
+
+  gateway:
+    image: ghcr.io/tanzil-ali-rizvi/llm-gateway:latest
+    environment:
+      GROQ_API_KEY: ${GROQ_API_KEY:-}
+      LLMGW_CONFIG: /config/intake.yaml
+      LLMGW_MASTER_KEY: ${LLMGW_MASTER_KEY:-local-admin-key}
+    ports: ["8080:8080"]
+    volumes: ["./gateway:/config:ro", "gateway-data:/data"]
+
+  n8n:
+    image: n8nio/n8n:2.48.8
+    depends_on:
+      intake-api: {condition: service_healthy}
+    environment:
+      INTAKE_API_URL: http://intake-api:8000
+      LLM_URL: ${LLM_URL:-http://gateway:8080/v1/chat/completions}
+      LLM_MODEL: ${LLM_MODEL:-intake}
+      N8N_BLOCK_ENV_ACCESS_IN_NODE: "false"     # the workflow reads the three URLs above from the environment
+      N8N_ENCRYPTION_KEY: ${N8N_ENCRYPTION_KEY:-change-me-for-anything-real}
+      N8N_DIAGNOSTICS_ENABLED: "false"
+      N8N_PERSONALIZATION_ENABLED: "false"
+      N8N_SECURE_COOKIE: "false"
+      GENERIC_TIMEZONE: Asia/Kolkata
+      TZ: Asia/Kolkata
+    ports: ["5678:5678"]
+    volumes: ["./workflows:/workflows:ro", "./scripts/n8n-start.sh:/n8n-start.sh:ro", "n8n-data:/home/node/.n8n"]
+    entrypoint: ["/bin/sh", "/n8n-start.sh"]
+
+volumes:
+  intake-data:
+  gateway-data:
+  n8n-data:

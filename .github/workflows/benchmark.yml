@@ -1,0 +1,42 @@
+name: Benchmark
+on:
+  workflow_dispatch:
+    inputs:
+      split:
+        description: "dev, test or all"
+        default: test
+
+permissions:
+  contents: write
+
+concurrency:
+  group: benchmark
+  cancel-in-progress: false
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      INTAKE_TODAY: "2026-11-20"
+      INTAKE_ALLOW_RESET: "1"
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      LLM_MODEL: eval
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install httpx
+      - run: docker compose up -d --build
+      - run: python scripts/wait_ready.py
+      - run: python eval/run.py --split "${{ inputs.split }}"
+      - if: always()
+        run: docker compose logs --tail=100 gateway n8n
+      - name: Commit results
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add results/ || true
+          git diff --cached --quiet || (git commit -m "Benchmark results from CI" && git pull --rebase && git push)

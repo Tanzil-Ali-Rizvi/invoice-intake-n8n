@@ -1,0 +1,19 @@
+# llm-gateway config for the intake stack. The gateway is only reachable inside the compose network, so auth is off.
+providers:
+  groq:
+    type: openai
+    base_url: https://api.groq.com/openai/v1
+    api_key_env: GROQ_API_KEY
+    timeout_s: 90
+    models:
+      openai/gpt-oss-120b: {input_per_1m: 0.15, output_per_1m: 0.60}
+      openai/gpt-oss-20b: {input_per_1m: 0.075, output_per_1m: 0.30}
+routes:
+  intake: [groq/openai/gpt-oss-120b, groq/openai/gpt-oss-20b]
+  eval: [groq/openai/gpt-oss-120b]   # one model, no fallback: benchmark results stay attributable
+default_route: intake
+cache: {enabled: false}
+breaker: {failure_threshold: 5, cooldown_s: 30}
+retry: {attempts_per_target: 4, backoff_s: 1.0, max_retry_after_s: 30}
+database: /data/gateway.db
+require_auth: false

@@ -1,0 +1,45 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r service/requirements.txt -r requirements-dev.txt
+      - run: ruff check . && ruff format --check .
+      - name: Dataset and workflow are reproducible from source
+        run: |
+          python dataset/generate.py && python workflows/build.py
+          git diff --exit-code -- dataset workflows
+      - run: pytest -q
+
+  n8n-end-to-end:
+    # Real n8n in Docker, the real workflow, the real rules service. The LLM is the stand-in that returns each
+    # invoice's ground truth, so this proves the plumbing on every push without an API key.
+    runs-on: ubuntu-latest
+    needs: test
+    env:
+      INTAKE_TODAY: "2026-11-20"
+      INTAKE_ALLOW_RESET: "1"
+      INTAKE_MOCK_LLM: "1"
+      LLM_URL: http://intake-api:8000/mock-llm/v1/chat/completions
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install httpx
+      - run: docker compose up -d --build intake-api n8n
+      - run: python scripts/wait_ready.py
+      - run: python eval/run.py --split dev --mock --pause 0
+      - name: Every dev invoice must be routed correctly when extraction is perfect
+        run: python -c "import json,sys; s=json.load(open('results/e2e_dev_mock.json'))['summary']; print(s['route_accuracy']); sys.exit(s['route_accuracy'] < 1.0)"
+      - if: failure()
+        run: docker compose logs --tail=200
