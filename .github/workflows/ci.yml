@@ -17,7 +17,7 @@ jobs:
       - name: Dataset and workflow are reproducible from source
         run: |
           python dataset/generate.py && python workflows/build.py
-          git diff --exit-code -- dataset workflows
+          git diff --exit-code -- dataset/truth.json workflows   # PDF bytes vary with zlib builds; content is in truth.json
       - run: pytest -q
 
   n8n-end-to-end:
