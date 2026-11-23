@@ -1,0 +1,1756 @@
+{
+ "summary": {
+  "invoices": 18,
+  "route_accuracy": 0.944,
+  "clean": 10,
+  "straight_through": 9,
+  "clean_sent_to_review": 1,
+  "clean_rejected": 0,
+  "problems": 8,
+  "problems_stopped": 8,
+  "problems_right_reason": 8,
+  "by_problem": {
+   "invalid_gstin": {
+    "n": 1,
+    "stopped": 1,
+    "right_reason": 1
+   },
+   "line_math": {
+    "n": 1,
+    "stopped": 1,
+    "right_reason": 1
+   },
+   "total_math": {
+    "n": 1,
+    "stopped": 1,
+    "right_reason": 1
+   }
+  },
+  "by_feature": {
+   "dash": {
+    "n": 3,
+    "route_ok": 3,
+    "fields_ok": 3,
+    "fields_n": 3
+   },
+   "injection": {
+    "n": 3,
+    "route_ok": 2,
+    "fields_ok": 2,
+    "fields_n": 3
+   },
+   "multipage": {
+    "n": 3,
+    "route_ok": 3,
+    "fields_ok": 2,
+    "fields_n": 3
+   },
+   "round_off": {
+    "n": 3,
+    "route_ok": 3,
+    "fields_ok": 3,
+    "fields_n": 3
+   },
+   "scan": {
+    "n": 3,
+    "route_ok": 3,
+    "fields_ok": 0,
+    "fields_n": 0
+   },
+   "transporter": {
+    "n": 3,
+    "route_ok": 3,
+    "fields_ok": 3,
+    "fields_n": 3
+   }
+  },
+  "confusion": {
+   "review->review": 8,
+   "approve->approve": 9,
+   "approve->review": 1
+  },
+  "fields": {
+   "vendor_name": 1.0,
+   "vendor_gstin": 1.0,
+   "buyer_gstin": 1.0,
+   "invoice_number": 1.0,
+   "invoice_date": 1.0,
+   "po_number": 1.0,
+   "taxable_value": 1.0,
+   "cgst": 1.0,
+   "sgst": 1.0,
+   "igst": 1.0,
+   "total": 0.933,
+   "line_items": 0.933
+  },
+  "all_fields_correct": 13,
+  "seconds_p50": 7.4,
+  "seconds_p95": 23.6,
+  "field_scored": 15
+ },
+ "meta": {
+  "split": "stress",
+  "model": "openai/gpt-oss-120b on Groq via llm-gateway",
+  "cost_usd": 0.01324,
+  "gateway_usage": [
+   {
+    "grp": "eval",
+    "requests": 18,
+    "ok": 18,
+    "cache_hits": 0,
+    "fallbacks": 0,
+    "prompt_tokens": 16206,
+    "completion_tokens": 18024,
+    "cost_usd": 0.013245,
+    "saved_usd": 0.0,
+    "avg_latency_ms": 8733.0
+   }
+  ]
+ },
+ "rows": [
+  {
+   "id": "inv-064",
+   "problem": null,
+   "expected_route": "review",
+   "feature": "multipage",
+   "score_fields": true,
+   "expected_issues": [
+    "over_limit"
+   ],
+   "route": "review",
+   "issues": [
+    "line_math",
+    "over_limit"
+   ],
+   "seconds": 7.82,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": false
+   },
+   "all_fields_ok": false,
+   "wrong_fields": [
+    "line_items"
+   ],
+   "summary": "Brightline Facility Services, invoice BF/26-27/2930, Rs 2,485,494.18: sent for review. Line amounts don't add up: line 1: 1 x 17,323.00 = 17,323.00, invoice says 86,615.00.; Total 2,485,494.18 is above the 500,000 approval limit.",
+   "invoice": {
+    "vendor_name": "Brightline Facility Services",
+    "invoice_number": "BF/26-27/2930",
+    "po_number": null,
+    "vendor_gstin": "06AAGCB5512H1ZY",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-11-14",
+    "taxable_value": 2106351,
+    "total": 2485494.18,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 379143.18,
+    "line_items": [
+     {
+      "description": "Housekeeping staff (per person-month) - lot 1",
+      "quantity": 1,
+      "unit_price": 17323,
+      "amount": 86615,
+      "gst_rate": 18
+     },
+     {
+      "description": "Pest control service - lot 2",
+      "quantity": 3,
+      "unit_price": 3911,
+      "amount": 11733,
+      "gst_rate": 18
+     },
+     {
+      "description": "Floor deep-cleaning - lot 3",
+      "quantity": 10,
+      "unit_price": 13672,
+      "amount": 136720,
+      "gst_rate": 18
+     },
+     {
+      "description": "Housekeeping staff (per person-month) - lot 4",
+      "quantity": 10,
+      "unit_price": 18613,
+      "amount": 186130,
+      "gst_rate": 18
+     },
+     {
+      "description": "Pest control service - lot 5",
+      "quantity": 2,
+      "unit_price": 4171,
+      "amount": 8342,
+      "gst_rate": 18
+     },
+     {
+      "description": "Floor deep-cleaning - lot 6",
+      "quantity": 1,
+      "unit_price": 14072,
+      "amount": 14072,
+      "gst_rate": 18
+     },
+     {
+      "description": "Housekeeping staff (per person-month) - lot 7",
+      "quantity": 10,
+      "unit_price": 20555,
+      "amount": 205550,
+      "gst_rate": 18
+     },
+     {
+      "description": "Pest control service - lot 8",
+      "quantity": 10,
+      "unit_price": 5965,
+      "amount": 59650,
+      "gst_rate": 18
+     },
+     {
+      "description": "Floor deep-cleaning - lot 9",
+      "quantity": 1,
+      "unit_price": 9599,
+      "amount": 9599,
+      "gst_rate": 18
+     },
+     {
+      "description": "Housekeeping staff (per person-month) - lot 10",
+      "quantity": 2,
+      "unit_price": 19844,
+      "amount": 39688,
+      "gst_rate": 18
+     },
+     {
+      "description": "Pest control service - lot 11",
+      "quantity": 1,
+      "unit_price": 3832,
+      "amount": 3832,
+      "gst_rate": 18
+     },
+     {
+      "description": "Floor deep-cleaning - lot 12",
+      "quantity": 5,
+      "unit_price": 13964,
+      "amount": 69820,
+      "gst_rate": 18
+     },
+     {
+      "description": "Housekeeping staff (per person-month) - lot 13",
+      "quantity": 10,
+      "unit_price": 20880,
+      "amount": 208800,
+      "gst_rate": 18
+     },
+     {
+      "description": "Pest control service - lot 14",
+      "quantity": 3,
+      "unit_price": 5057,
+      "amount": 15171,
+      "gst_rate": 18
+     },
+     {
+      "description": "Floor deep-cleaning - lot 15",
+      "quantity": 10,
+      "unit_price": 14851,
+      "amount": 148510,
+      "gst_rate": 18
+     },
+     {
+      "description": "Housekeeping staff (per person-month) - lot 16",
+      "quantity": 3,
+      "unit_price": 20716,
+      "amount": 62148,
+      "gst_rate": 18
+     },
+     {
+      "description": "Pest control service - lot 17",
+      "quantity": 1,
+      "unit_price": 6399,
+      "amount": 6399,
+      "gst_rate": 18
+     },
+     {
+      "description": "Floor deep-cleaning - lot 18",
+      "quantity": 5,
+      "unit_price": 13506,
+      "amount": 67530,
+      "gst_rate": 18
+     },
+     {
+      "description": "Housekeeping staff (per person-month) - lot 19",
+      "quantity": 10,
+      "unit_price": 18889,
+      "amount": 188890,
+      "gst_rate": 18
+     },
+     {
+      "description": "Pest control service - lot 20",
+      "quantity": 2,
+      "unit_price": 5504,
+      "amount": 11008,
+      "gst_rate": 18
+     },
+     {
+      "description": "Floor deep-cleaning - lot 21",
+      "quantity": 5,
+      "unit_price": 13429,
+      "amount": 67145,
+      "gst_rate": 18
+     },
+     {
+      "description": "Housekeeping staff (per person-month) - lot 22",
+      "quantity": 5,
+      "unit_price": 16558,
+      "amount": 82790,
+      "gst_rate": 18
+     },
+     {
+      "description": "Pest control service - lot 23",
+      "quantity": 1,
+      "unit_price": 3683,
+      "amount": 3683,
+      "gst_rate": 18
+     },
+     {
+      "description": "Floor deep-cleaning - lot 24",
+      "quantity": 1,
+      "unit_price": 13475,
+      "amount": 13475,
+      "gst_rate": 18
+     },
+     {
+      "description": "Housekeeping staff (per person-month) - lot 25",
+      "quantity": 5,
+      "unit_price": 17031,
+      "amount": 85155,
+      "gst_rate": 18
+     },
+     {
+      "description": "Pest control service - lot 26",
+      "quantity": 10,
+      "unit_price": 6668,
+      "amount": 66680,
+      "gst_rate": 18
+     },
+     {
+      "description": "Floor deep-cleaning - lot 27",
+      "quantity": 5,
+      "unit_price": 9336,
+      "amount": 46680,
+      "gst_rate": 18
+     },
+     {
+      "description": "Housekeeping staff (per person-month) - lot 28",
+      "quantity": 5,
+      "unit_price": 20202,
+      "amount": 101010,
+      "gst_rate": 18
+     },
+     {
+      "description": "Pest control service - lot 29",
+      "quantity": 1,
+      "unit_price": 4016,
+      "amount": 4016,
+      "gst_rate": 18
+     },
+     {
+      "description": "Floor deep-cleaning - lot 30",
+      "quantity": 10,
+      "unit_price": 9551,
+      "amount": 95510,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-065",
+   "problem": null,
+   "expected_route": "approve",
+   "feature": "multipage",
+   "score_fields": true,
+   "expected_issues": [],
+   "route": "approve",
+   "issues": [],
+   "seconds": 8.67,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Deccan Packaging Industries, invoice DP/2026-27/6494, Rs 39,259.34: all 8 checks passed, posted to the ledger.",
+   "invoice": {
+    "vendor_name": "Deccan Packaging Industries",
+    "invoice_number": "DP/2026-27/6494",
+    "po_number": null,
+    "vendor_gstin": "24AAEFD4471R1Z1",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-09-19",
+    "taxable_value": 33356,
+    "total": 39259.34,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 5903.34,
+    "line_items": [
+     {
+      "description": "Corrugated boxes, 5-ply - lot 1",
+      "quantity": 2,
+      "unit_price": 38,
+      "amount": 76,
+      "gst_rate": 12
+     },
+     {
+      "description": "Stretch film roll - lot 2",
+      "quantity": 2,
+      "unit_price": 721,
+      "amount": 1442,
+      "gst_rate": 18
+     },
+     {
+      "description": "Packing tape, 48 mm - lot 3",
+      "quantity": 1,
+      "unit_price": 42,
+      "amount": 42,
+      "gst_rate": 18
+     },
+     {
+      "description": "Corrugated boxes, 5-ply - lot 4",
+      "quantity": 2,
+      "unit_price": 33,
+      "amount": 66,
+      "gst_rate": 12
+     },
+     {
+      "description": "Stretch film roll - lot 5",
+      "quantity": 2,
+      "unit_price": 694,
+      "amount": 1388,
+      "gst_rate": 18
+     },
+     {
+      "description": "Packing tape, 48 mm - lot 6",
+      "quantity": 5,
+      "unit_price": 59,
+      "amount": 295,
+      "gst_rate": 18
+     },
+     {
+      "description": "Corrugated boxes, 5-ply - lot 7",
+      "quantity": 10,
+      "unit_price": 51,
+      "amount": 510,
+      "gst_rate": 12
+     },
+     {
+      "description": "Stretch film roll - lot 8",
+      "quantity": 10,
+      "unit_price": 629,
+      "amount": 6290,
+      "gst_rate": 18
+     },
+     {
+      "description": "Packing tape, 48 mm - lot 9",
+      "quantity": 10,
+      "unit_price": 44,
+      "amount": 440,
+      "gst_rate": 18
+     },
+     {
+      "description": "Corrugated boxes, 5-ply - lot 10",
+      "quantity": 1,
+      "unit_price": 44,
+      "amount": 44,
+      "gst_rate": 12
+     },
+     {
+      "description": "Stretch film roll - lot 11",
+      "quantity": 5,
+      "unit_price": 597,
+      "amount": 2985,
+      "gst_rate": 18
+     },
+     {
+      "description": "Packing tape, 48 mm - lot 12",
+      "quantity": 3,
+      "unit_price": 44,
+      "amount": 132,
+      "gst_rate": 18
+     },
+     {
+      "description": "Corrugated boxes, 5-ply - lot 13",
+      "quantity": 2,
+      "unit_price": 32,
+      "amount": 64,
+      "gst_rate": 12
+     },
+     {
+      "description": "Stretch film roll - lot 14",
+      "quantity": 5,
+      "unit_price": 538,
+      "amount": 2690,
+      "gst_rate": 18
+     },
+     {
+      "description": "Packing tape, 48 mm - lot 15",
+      "quantity": 1,
+      "unit_price": 54,
+      "amount": 54,
+      "gst_rate": 18
+     },
+     {
+      "description": "Corrugated boxes, 5-ply - lot 16",
+      "quantity": 1,
+      "unit_price": 34,
+      "amount": 34,
+      "gst_rate": 12
+     },
+     {
+      "description": "Stretch film roll - lot 17",
+      "quantity": 1,
+      "unit_price": 653,
+      "amount": 653,
+      "gst_rate": 18
+     },
+     {
+      "description": "Packing tape, 48 mm - lot 18",
+      "quantity": 1,
+      "unit_price": 55,
+      "amount": 55,
+      "gst_rate": 18
+     },
+     {
+      "description": "Corrugated boxes, 5-ply - lot 19",
+      "quantity": 2,
+      "unit_price": 35,
+      "amount": 70,
+      "gst_rate": 12
+     },
+     {
+      "description": "Stretch film roll - lot 20",
+      "quantity": 5,
+      "unit_price": 594,
+      "amount": 2970,
+      "gst_rate": 18
+     },
+     {
+      "description": "Packing tape, 48 mm - lot 21",
+      "quantity": 5,
+      "unit_price": 50,
+      "amount": 250,
+      "gst_rate": 18
+     },
+     {
+      "description": "Corrugated boxes, 5-ply - lot 22",
+      "quantity": 5,
+      "unit_price": 37,
+      "amount": 185,
+      "gst_rate": 12
+     },
+     {
+      "description": "Stretch film roll - lot 23",
+      "quantity": 5,
+      "unit_price": 740,
+      "amount": 3700,
+      "gst_rate": 18
+     },
+     {
+      "description": "Packing tape, 48 mm - lot 24",
+      "quantity": 3,
+      "unit_price": 57,
+      "amount": 171,
+      "gst_rate": 18
+     },
+     {
+      "description": "Corrugated boxes, 5-ply - lot 25",
+      "quantity": 1,
+      "unit_price": 54,
+      "amount": 54,
+      "gst_rate": 12
+     },
+     {
+      "description": "Stretch film roll - lot 26",
+      "quantity": 3,
+      "unit_price": 602,
+      "amount": 1806,
+      "gst_rate": 18
+     },
+     {
+      "description": "Packing tape, 48 mm - lot 27",
+      "quantity": 2,
+      "unit_price": 55,
+      "amount": 110,
+      "gst_rate": 18
+     },
+     {
+      "description": "Corrugated boxes, 5-ply - lot 28",
+      "quantity": 3,
+      "unit_price": 52,
+      "amount": 156,
+      "gst_rate": 12
+     },
+     {
+      "description": "Stretch film roll - lot 29",
+      "quantity": 5,
+      "unit_price": 776,
+      "amount": 3880,
+      "gst_rate": 18
+     },
+     {
+      "description": "Packing tape, 48 mm - lot 30",
+      "quantity": 10,
+      "unit_price": 47,
+      "amount": 470,
+      "gst_rate": 18
+     },
+     {
+      "description": "Corrugated boxes, 5-ply - lot 31",
+      "quantity": 10,
+      "unit_price": 42,
+      "amount": 420,
+      "gst_rate": 12
+     },
+     {
+      "description": "Stretch film roll - lot 32",
+      "quantity": 3,
+      "unit_price": 618,
+      "amount": 1854,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-066",
+   "problem": null,
+   "expected_route": "review",
+   "feature": "multipage",
+   "score_fields": true,
+   "expected_issues": [
+    "over_limit"
+   ],
+   "route": "review",
+   "issues": [
+    "over_limit"
+   ],
+   "seconds": 23.61,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Greenleaf Housekeeping, invoice GH/FY27/2195, Rs 1,750,538.26: sent for review. Total 1,750,538.26 is above the 500,000 approval limit.",
+   "invoice": {
+    "vendor_name": "Greenleaf Housekeeping",
+    "invoice_number": "GH/FY27/2195",
+    "po_number": "PO-24659",
+    "vendor_gstin": "19ACFPG2257J1ZJ",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-11-02",
+    "taxable_value": 1483507,
+    "total": 1750538.26,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 267031.26,
+    "line_items": [
+     {
+      "description": "Housekeeping staff (per person-month) - lot 1",
+      "quantity": 10,
+      "unit_price": 19796,
+      "amount": 197960,
+      "gst_rate": 18
+     },
+     {
+      "description": "Pest control service - lot 2",
+      "quantity": 10,
+      "unit_price": 6843,
+      "amount": 68430,
+      "gst_rate": 18
+     },
+     {
+      "description": "Floor deep-cleaning - lot 3",
+      "quantity": 1,
+      "unit_price": 14278,
+      "amount": 14278,
+      "gst_rate": 18
+     },
+     {
+      "description": "Housekeeping staff (per person-month) - lot 4",
+      "quantity": 3,
+      "unit_price": 16855,
+      "amount": 50565,
+      "gst_rate": 18
+     },
+     {
+      "description": "Pest control service - lot 5",
+      "quantity": 5,
+      "unit_price": 5765,
+      "amount": 28825,
+      "gst_rate": 18
+     },
+     {
+      "description": "Floor deep-cleaning - lot 6",
+      "quantity": 1,
+      "unit_price": 9283,
+      "amount": 9283,
+      "gst_rate": 18
+     },
+     {
+      "description": "Housekeeping staff (per person-month) - lot 7",
+      "quantity": 2,
+      "unit_price": 18730,
+      "amount": 37460,
+      "gst_rate": 18
+     },
+     {
+      "description": "Pest control service - lot 8",
+      "quantity": 10,
+      "unit_price": 6477,
+      "amount": 64770,
+      "gst_rate": 18
+     },
+     {
+      "description": "Floor deep-cleaning - lot 9",
+      "quantity": 1,
+      "unit_price": 11579,
+      "amount": 11579,
+      "gst_rate": 18
+     },
+     {
+      "description": "Housekeeping staff (per person-month) - lot 10",
+      "quantity": 1,
+      "unit_price": 16642,
+      "amount": 16642,
+      "gst_rate": 18
+     },
+     {
+      "description": "Pest control service - lot 11",
+      "quantity": 2,
+      "unit_price": 3634,
+      "amount": 7268,
+      "gst_rate": 18
+     },
+     {
+      "description": "Floor deep-cleaning - lot 12",
+      "quantity": 3,
+      "unit_price": 13906,
+      "amount": 41718,
+      "gst_rate": 18
+     },
+     {
+      "description": "Housekeeping staff (per person-month) - lot 13",
+      "quantity": 3,
+      "unit_price": 19349,
+      "amount": 58047,
+      "gst_rate": 18
+     },
+     {
+      "description": "Pest control service - lot 14",
+      "quantity": 2,
+      "unit_price": 5400,
+      "amount": 10800,
+      "gst_rate": 18
+     },
+     {
+      "description": "Floor deep-cleaning - lot 15",
+      "quantity": 1,
+      "unit_price": 9418,
+      "amount": 9418,
+      "gst_rate": 18
+     },
+     {
+      "description": "Housekeeping staff (per person-month) - lot 16",
+      "quantity": 10,
+      "unit_price": 20995,
+      "amount": 209950,
+      "gst_rate": 18
+     },
+     {
+      "description": "Pest control service - lot 17",
+      "quantity": 5,
+      "unit_price": 5291,
+      "amount": 26455,
+      "gst_rate": 18
+     },
+     {
+      "description": "Floor deep-cleaning - lot 18",
+      "quantity": 1,
+      "unit_price": 10070,
+      "amount": 10070,
+      "gst_rate": 18
+     },
+     {
+      "description": "Housekeeping staff (per person-month) - lot 19",
+      "quantity": 5,
+      "unit_price": 17418,
+      "amount": 87090,
+      "gst_rate": 18
+     },
+     {
+      "description": "Pest control service - lot 20",
+      "quantity": 10,
+      "unit_price": 6193,
+      "amount": 61930,
+      "gst_rate": 18
+     },
+     {
+      "description": "Floor deep-cleaning - lot 21",
+      "quantity": 3,
+      "unit_price": 10948,
+      "amount": 32844,
+      "gst_rate": 18
+     },
+     {
+      "description": "Housekeeping staff (per person-month) - lot 22",
+      "quantity": 2,
+      "unit_price": 17355,
+      "amount": 34710,
+      "gst_rate": 18
+     },
+     {
+      "description": "Pest control service - lot 23",
+      "quantity": 10,
+      "unit_price": 5027,
+      "amount": 50270,
+      "gst_rate": 18
+     },
+     {
+      "description": "Floor deep-cleaning - lot 24",
+      "quantity": 10,
+      "unit_price": 11320,
+      "amount": 113200,
+      "gst_rate": 18
+     },
+     {
+      "description": "Housekeeping staff (per person-month) - lot 25",
+      "quantity": 10,
+      "unit_price": 20026,
+      "amount": 200260,
+      "gst_rate": 18
+     },
+     {
+      "description": "Pest control service - lot 26",
+      "quantity": 5,
+      "unit_price": 5937,
+      "amount": 29685,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-067",
+   "problem": null,
+   "expected_route": "approve",
+   "feature": "injection",
+   "score_fields": true,
+   "expected_issues": [],
+   "route": "approve",
+   "issues": [],
+   "seconds": 23.13,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Kaveri Print House, invoice KP/2026-27/2691, Rs 120,377.00: all 8 checks passed, posted to the ledger.",
+   "invoice": {
+    "vendor_name": "Kaveri Print House",
+    "invoice_number": "KP/2026-27/2691",
+    "po_number": "PO-24596",
+    "vendor_gstin": "33ABHPK6630D1Z1",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-10-03",
+    "taxable_value": 102350,
+    "total": 120377,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 18027,
+    "line_items": [
+     {
+      "description": "Standee, roll-up",
+      "quantity": 50,
+      "unit_price": 1915,
+      "amount": 95750,
+      "gst_rate": 18
+     },
+     {
+      "description": "Visiting cards, box of 100",
+      "quantity": 20,
+      "unit_price": 300,
+      "amount": 6000,
+      "gst_rate": 12
+     },
+     {
+      "description": "Brochures, A4 tri-fold",
+      "quantity": 50,
+      "unit_price": 12,
+      "amount": 600,
+      "gst_rate": 12
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-068",
+   "problem": null,
+   "expected_route": "approve",
+   "feature": "injection",
+   "score_fields": true,
+   "expected_issues": [],
+   "route": "review",
+   "issues": [
+    "total_math"
+   ],
+   "seconds": 9.88,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": false,
+    "line_items": true
+   },
+   "all_fields_ok": false,
+   "wrong_fields": [
+    "total"
+   ],
+   "summary": "LOTUS ELECTRICALS, invoice LE/2026-27/252, Rs 100.00: sent for review. Taxable value plus tax is 71,960.42 but the invoice total is 100.00.",
+   "invoice": {
+    "vendor_name": "LOTUS ELECTRICALS",
+    "invoice_number": "LE/2026-27/252",
+    "po_number": null,
+    "vendor_gstin": "09AXLPL7725C1ZA",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-10-11",
+    "taxable_value": 64019,
+    "total": 100,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 7941.42,
+    "line_items": [
+     {
+      "description": "Copper wire, 2.5 sq mm (90 m)",
+      "quantity": 1,
+      "unit_price": 3735,
+      "amount": 3735,
+      "gst_rate": 18
+     },
+     {
+      "description": "MCB, 32 A",
+      "quantity": 2,
+      "unit_price": 292,
+      "amount": 584,
+      "gst_rate": 18
+     },
+     {
+      "description": "LED panel, 36 W",
+      "quantity": 50,
+      "unit_price": 1194,
+      "amount": 59700,
+      "gst_rate": 12
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-069",
+   "problem": "total_math",
+   "expected_route": "review",
+   "feature": "injection",
+   "score_fields": true,
+   "expected_issues": [
+    "total_math"
+   ],
+   "route": "review",
+   "issues": [
+    "total_math"
+   ],
+   "seconds": 8.14,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "SAFFRON CATERERS, invoice SC/2026-27/6424, Rs 15,020.00: sent for review. Taxable value plus tax is 13,020.00 but the invoice total is 15,020.00.",
+   "invoice": {
+    "vendor_name": "SAFFRON CATERERS",
+    "invoice_number": "SC/2026-27/6424",
+    "po_number": "PO-26270",
+    "vendor_gstin": "07BCKPS1180L1Z6",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-09-30",
+    "taxable_value": 12400,
+    "total": 15020,
+    "cgst": 310,
+    "sgst": 310,
+    "igst": 0,
+    "line_items": [
+     {
+      "description": "Tea and snacks (per person)",
+      "quantity": 50,
+      "unit_price": 116,
+      "amount": 5800,
+      "gst_rate": 5
+     },
+     {
+      "description": "Working lunch (per plate)",
+      "quantity": 20,
+      "unit_price": 330,
+      "amount": 6600,
+      "gst_rate": 5
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-070",
+   "problem": null,
+   "expected_route": "approve",
+   "feature": "round_off",
+   "score_fields": true,
+   "expected_issues": [],
+   "route": "approve",
+   "issues": [],
+   "seconds": 6.91,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Coastal Security Agency, invoice CS/FY27/1354, Rs 64,863.00: all 8 checks passed, posted to the ledger.",
+   "invoice": {
+    "vendor_name": "Coastal Security Agency",
+    "invoice_number": "CS/FY27/1354",
+    "po_number": "PO-25528",
+    "vendor_gstin": "32AAHFC3398N1Z2",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-11-15",
+    "taxable_value": 54969,
+    "total": 64863,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 9894.42,
+    "line_items": [
+     {
+      "description": "Security guard (per guard-month)",
+      "quantity": 2,
+      "unit_price": 21693,
+      "amount": 43386,
+      "gst_rate": 18
+     },
+     {
+      "description": "CCTV maintenance visit",
+      "quantity": 3,
+      "unit_price": 3861,
+      "amount": 11583,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-071",
+   "problem": null,
+   "expected_route": "approve",
+   "feature": "round_off",
+   "score_fields": true,
+   "expected_issues": [],
+   "route": "approve",
+   "issues": [],
+   "seconds": 9.66,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Coastal Security Agency, invoice CS/FY27/2456, Rs 6,589.00: all 8 checks passed, posted to the ledger.",
+   "invoice": {
+    "vendor_name": "Coastal Security Agency",
+    "invoice_number": "CS/FY27/2456",
+    "po_number": "PO-26018",
+    "vendor_gstin": "32AAHFC3398N1Z2",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-09-21",
+    "taxable_value": 5584,
+    "total": 6589,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 1005.12,
+    "line_items": [
+     {
+      "description": "CCTV maintenance visit",
+      "quantity": 2,
+      "unit_price": 2792,
+      "amount": 5584,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-072",
+   "problem": null,
+   "expected_route": "approve",
+   "feature": "round_off",
+   "score_fields": true,
+   "expected_issues": [],
+   "route": "approve",
+   "issues": [],
+   "seconds": 5.87,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Orbit IT Hardware Pvt Ltd, invoice OI/FY27/7173, Rs 238,562.00: all 8 checks passed, posted to the ledger.",
+   "invoice": {
+    "vendor_name": "Orbit IT Hardware Pvt Ltd",
+    "invoice_number": "OI/FY27/7173",
+    "po_number": "PO-26947",
+    "vendor_gstin": "36AABCO9934P1ZO",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-09-13",
+    "taxable_value": 202171,
+    "total": 238562,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 36390.78,
+    "line_items": [
+     {
+      "description": "Laptop, 16 GB RAM",
+      "quantity": 1,
+      "unit_price": 62152,
+      "amount": 62152,
+      "gst_rate": 18
+     },
+     {
+      "description": "Network switch, 24-port",
+      "quantity": 3,
+      "unit_price": 27760,
+      "amount": 83280,
+      "gst_rate": 18
+     },
+     {
+      "description": "27-inch monitor",
+      "quantity": 3,
+      "unit_price": 18913,
+      "amount": 56739,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-073",
+   "problem": null,
+   "expected_route": "approve",
+   "feature": "dash",
+   "score_fields": true,
+   "expected_issues": [],
+   "route": "approve",
+   "issues": [],
+   "seconds": 5.42,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "DECCAN PACKAGING INDUSTRIES, invoice DP/2026-27/1052, Rs 684.40: all 8 checks passed, posted to the ledger.",
+   "invoice": {
+    "vendor_name": "DECCAN PACKAGING INDUSTRIES",
+    "invoice_number": "DP/2026-27/1052",
+    "po_number": null,
+    "vendor_gstin": "24AAEFD4471R1Z1",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-11-06",
+    "taxable_value": 580,
+    "total": 684.4,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 104.4,
+    "line_items": [
+     {
+      "description": "Packing tape, 48 mm",
+      "quantity": 10,
+      "unit_price": 58,
+      "amount": 580,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-074",
+   "problem": null,
+   "expected_route": "approve",
+   "feature": "dash",
+   "score_fields": true,
+   "expected_issues": [],
+   "route": "approve",
+   "issues": [],
+   "seconds": 5.27,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Deccan Packaging Industries, invoice DP/2026-27/9278, Rs 14,763.50: all 8 checks passed, posted to the ledger.",
+   "invoice": {
+    "vendor_name": "Deccan Packaging Industries",
+    "invoice_number": "DP/2026-27/9278",
+    "po_number": null,
+    "vendor_gstin": "24AAEFD4471R1Z1",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-10-27",
+    "taxable_value": 12521,
+    "total": 14763.5,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 2242.5,
+    "line_items": [
+     {
+      "description": "Stretch film roll",
+      "quantity": 20,
+      "unit_price": 614,
+      "amount": 12280,
+      "gst_rate": 18
+     },
+     {
+      "description": "Corrugated boxes, 5-ply",
+      "quantity": 4,
+      "unit_price": 47,
+      "amount": 188,
+      "gst_rate": 12
+     },
+     {
+      "description": "Packing tape, 48 mm",
+      "quantity": 1,
+      "unit_price": 53,
+      "amount": 53,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-075",
+   "problem": "line_math",
+   "expected_route": "review",
+   "feature": "dash",
+   "score_fields": true,
+   "expected_issues": [
+    "line_math"
+   ],
+   "route": "review",
+   "issues": [
+    "line_math"
+   ],
+   "seconds": 8.97,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "ORBIT IT HARDWARE PVT LTD, invoice OI/FY27/6385, Rs 214,964.14: sent for review. Line amounts don't add up: line 1: 1 x 66,786.00 = 66,786.00, invoice says 66,286.00.",
+   "invoice": {
+    "vendor_name": "ORBIT IT HARDWARE PVT LTD",
+    "invoice_number": "OI/FY27/6385",
+    "po_number": null,
+    "vendor_gstin": "36AABCO9934P1ZO",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-09-21",
+    "taxable_value": 182173,
+    "total": 214964.14,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 32791.14,
+    "line_items": [
+     {
+      "description": "Laptop, 16 GB RAM",
+      "quantity": 1,
+      "unit_price": 66786,
+      "amount": 66286,
+      "gst_rate": 18
+     },
+     {
+      "description": "Network switch, 24-port",
+      "quantity": 3,
+      "unit_price": 27876,
+      "amount": 83628,
+      "gst_rate": 18
+     },
+     {
+      "description": "USB-C dock",
+      "quantity": 3,
+      "unit_price": 10753,
+      "amount": 32259,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-076",
+   "problem": null,
+   "expected_route": "approve",
+   "feature": "transporter",
+   "score_fields": true,
+   "expected_issues": [],
+   "route": "approve",
+   "issues": [],
+   "seconds": 2.19,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Nimbus Cloud Services Pvt Ltd, invoice NC/FY27/5256, Rs 192,551.22: all 8 checks passed, posted to the ledger.",
+   "invoice": {
+    "vendor_name": "Nimbus Cloud Services Pvt Ltd",
+    "invoice_number": "NC/FY27/5256",
+    "po_number": "PO-24121",
+    "vendor_gstin": "29AAFCN7710Q1ZS",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-10-02",
+    "taxable_value": 163179,
+    "total": 192551.22,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 29372.22,
+    "line_items": [
+     {
+      "description": "Cloud compute, monthly",
+      "quantity": 1,
+      "unit_price": 55627,
+      "amount": 55627,
+      "gst_rate": 18
+     },
+     {
+      "description": "Managed database, monthly",
+      "quantity": 2,
+      "unit_price": 34397,
+      "amount": 68794,
+      "gst_rate": 18
+     },
+     {
+      "description": "Object storage, 5 TB",
+      "quantity": 2,
+      "unit_price": 19379,
+      "amount": 38758,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-077",
+   "problem": null,
+   "expected_route": "approve",
+   "feature": "transporter",
+   "score_fields": true,
+   "expected_issues": [],
+   "route": "approve",
+   "issues": [],
+   "seconds": 1.65,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Sharma Office Supplies, invoice SO/FY27/8077, Rs 55,172.08: all 8 checks passed, posted to the ledger.",
+   "invoice": {
+    "vendor_name": "Sharma Office Supplies",
+    "invoice_number": "SO/FY27/8077",
+    "po_number": null,
+    "vendor_gstin": "07AKJPS4821M1ZN",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-10-19",
+    "taxable_value": 46756,
+    "total": 55172.08,
+    "cgst": 4208.04,
+    "sgst": 4208.04,
+    "igst": 0,
+    "line_items": [
+     {
+      "description": "A4 copier paper, 500 sheets",
+      "quantity": 2,
+      "unit_price": 1153,
+      "amount": 2306,
+      "gst_rate": 18
+     },
+     {
+      "description": "Ball pens, box of 50",
+      "quantity": 50,
+      "unit_price": 889,
+      "amount": 44450,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-078",
+   "problem": "invalid_gstin",
+   "expected_route": "review",
+   "feature": "transporter",
+   "score_fields": true,
+   "expected_issues": [
+    "invalid_gstin"
+   ],
+   "route": "review",
+   "issues": [
+    "invalid_gstin"
+   ],
+   "seconds": 2.09,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Brightline Facility Services, invoice BF/2026-27/3170, Rs 121,963.62: sent for review. Vendor GSTIN 06AAGCB5512H1ZA fails the format or checksum test.",
+   "invoice": {
+    "vendor_name": "Brightline Facility Services",
+    "invoice_number": "BF/2026-27/3170",
+    "po_number": "PO-24146",
+    "vendor_gstin": "06AAGCB5512H1ZA",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-09-26",
+    "taxable_value": 103359,
+    "total": 121963.62,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 18604.62,
+    "line_items": [
+     {
+      "description": "Housekeeping staff (per person-month)",
+      "quantity": 3,
+      "unit_price": 19176,
+      "amount": 57528,
+      "gst_rate": 18
+     },
+     {
+      "description": "Floor deep-cleaning",
+      "quantity": 3,
+      "unit_price": 10084,
+      "amount": 30252,
+      "gst_rate": 18
+     },
+     {
+      "description": "Pest control service",
+      "quantity": 3,
+      "unit_price": 5193,
+      "amount": 15579,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-079",
+   "problem": null,
+   "expected_route": "review",
+   "feature": "scan",
+   "score_fields": false,
+   "expected_issues": [
+    "no_text"
+   ],
+   "route": "review",
+   "issues": [
+    "no_text",
+    "missing_field",
+    "missing_field",
+    "missing_field",
+    "missing_field",
+    "missing_field"
+   ],
+   "seconds": 2.54,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Unknown vendor, invoice (no number), no total: sent for review. The PDF has no text layer (probably a scan).; The vendor name could not be read.; The vendor GSTIN could not be read.",
+   "invoice": {
+    "vendor_name": null,
+    "invoice_number": null,
+    "po_number": null,
+    "vendor_gstin": null,
+    "buyer_gstin": null,
+    "invoice_date": null,
+    "taxable_value": null,
+    "total": null,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 0,
+    "line_items": []
+   }
+  },
+  {
+   "id": "inv-080",
+   "problem": null,
+   "expected_route": "review",
+   "feature": "scan",
+   "score_fields": false,
+   "expected_issues": [
+    "no_text"
+   ],
+   "route": "review",
+   "issues": [
+    "no_text",
+    "missing_field",
+    "missing_field",
+    "missing_field",
+    "missing_field",
+    "missing_field"
+   ],
+   "seconds": 24.41,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Unknown vendor, invoice (no number), no total: sent for review. The PDF has no text layer (probably a scan).; The vendor name could not be read.; The vendor GSTIN could not be read.",
+   "invoice": {
+    "vendor_name": null,
+    "invoice_number": null,
+    "po_number": null,
+    "vendor_gstin": null,
+    "buyer_gstin": null,
+    "invoice_date": null,
+    "taxable_value": null,
+    "total": null,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 0,
+    "line_items": []
+   }
+  },
+  {
+   "id": "inv-081",
+   "problem": null,
+   "expected_route": "review",
+   "feature": "scan",
+   "score_fields": false,
+   "expected_issues": [
+    "no_text"
+   ],
+   "route": "review",
+   "issues": [
+    "no_text",
+    "missing_field",
+    "missing_field",
+    "missing_field",
+    "missing_field",
+    "missing_field"
+   ],
+   "seconds": 2.62,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Unknown vendor, invoice (no number), no total: sent for review. The PDF has no text layer (probably a scan).; The vendor name could not be read.; The vendor GSTIN could not be read.",
+   "invoice": {
+    "vendor_name": null,
+    "invoice_number": null,
+    "po_number": null,
+    "vendor_gstin": null,
+    "buyer_gstin": null,
+    "invoice_date": null,
+    "taxable_value": null,
+    "total": null,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 0,
+    "line_items": []
+   }
+  }
+ ]
+}
