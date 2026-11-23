@@ -188,9 +188,9 @@ def test_workflow_connections_and_routes():
 # -------------------------------------------------------------------------------------------------------- dataset
 def test_ground_truth_agrees_with_the_rules():
     d = json.loads((ROOT / "dataset" / "truth.json").read_text())
-    for split in ("dev", "test"):
+    for split in ("dev", "test", "stress"):
         seen: set = set()
-        for r in [r for r in d["invoices"] if r["split"] == split]:
+        for r in [r for r in d["invoices"] if r["split"] == split and r.get("feature") != "scan"]:
             dec = validate(r["truth"], d["meta"]["buyer"]["gstin"], date.fromisoformat(d["meta"]["today"]), seen)
             codes = {i.code for i in dec.issues}
             assert dec.route == r["expected_route"], r["id"]
@@ -198,3 +198,16 @@ def test_ground_truth_agrees_with_the_rules():
             if dec.route != "reject":
                 seen.add((r["truth"]["vendor_gstin"], (r["truth"]["invoice_number"] or "").upper()))
     assert all((ROOT / "dataset" / r["file"]).exists() for r in d["invoices"])
+
+
+def test_stress_set_is_separate_and_scans_have_no_text():
+    from pypdf import PdfReader
+
+    d = json.loads((ROOT / "dataset" / "truth.json").read_text())
+    stress = [r for r in d["invoices"] if r["split"] == "stress"]
+    assert len(stress) >= 15 and {r["feature"] for r in stress} >= {"multipage", "injection", "scan", "round_off"}
+    for r in stress:
+        text = "".join((p.extract_text() or "") for p in PdfReader(ROOT / "dataset" / r["file"]).pages)
+        assert (len(text.strip()) == 0) == (r["feature"] == "scan"), r["id"]
+    multi = next(r for r in stress if r["feature"] == "multipage")
+    assert len(PdfReader(ROOT / "dataset" / multi["file"]).pages) == 2

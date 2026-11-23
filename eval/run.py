@@ -77,8 +77,16 @@ def score(rows: list[dict]) -> dict:
         sub = [r for r in problems if r["problem"] == p]
         out["by_problem"][p] = {"n": len(sub), "stopped": sum(r["route"] != "approve" for r in sub),
                                 "right_reason": sum(set(r["expected_issues"]) <= set(r["issues"]) for r in sub)}  # fmt: skip
+    scored = [r for r in rows if r.get("score_fields", True)]  # scans have no text to extract
     for f in FIELDS + ["line_items"]:
-        out["fields"][f] = round(sum(r["field_ok"][f] for r in rows) / n, 3)
+        out["fields"][f] = round(sum(r["field_ok"][f] for r in scored) / len(scored), 3) if scored else None
+    out["all_fields_correct"] = sum(r["all_fields_ok"] for r in scored)
+    out["field_scored"] = len(scored)
+    for feat in sorted({r.get("feature") for r in rows if r.get("feature")}):
+        sub = [r for r in rows if r.get("feature") == feat]
+        out["by_feature"][feat] = {"n": len(sub), "route_ok": sum(r["route"] == r["expected_route"] for r in sub),
+                                   "fields_ok": sum(r["all_fields_ok"] for r in sub if r.get("score_fields", True)),
+                                   "fields_n": sum(1 for r in sub if r.get("score_fields", True))}  # fmt: skip
     return out
 
 
@@ -95,17 +103,24 @@ def to_md(s: dict, rows: list[dict], meta: dict) -> str:
         f"| Clean invoices sent to review unnecessarily | {s['clean_sent_to_review']} |",
         f"| Problem invoices stopped (review or reject) | **{s['problems_stopped']} / {s['problems']}** |",
         f"| ... stopped for the right reason | {s['problems_right_reason']} / {s['problems']} |",
-        f"| Invoices with every field extracted correctly | {s['all_fields_correct']} / {s['invoices']} |",
+        f"| Invoices with every field extracted correctly | {s['all_fields_correct']} / {s['field_scored']} |",
         f"| Time per invoice through n8n (p50 / p95) | {s['seconds_p50']} s / {s['seconds_p95']} s |",
     ]
     if meta.get("cost_usd") is not None:
         lines.append(
             f"| LLM cost | ${meta['cost_usd']:.4f} in total, ${meta['cost_usd'] / s['invoices']:.5f} per invoice |"
         )
+    if s["by_feature"]:
+        lines += ["", "| Stress feature | Invoices | Routed correctly | Every field correct |", "|---|---|---|---|"]
+        for f, v in s["by_feature"].items():
+            fields = f"{v['fields_ok']} / {v['fields_n']}" if v["fields_n"] else "n/a (no text)"
+            lines.append(f"| {f.replace('_', ' ')} | {v['n']} | {v['route_ok']} | {fields} |")
     lines += ["", "| Planted problem | Invoices | Stopped | Right reason |", "|---|---|---|---|"]
     for p, v in s["by_problem"].items():
         lines.append(f"| {p.replace('_', ' ')} | {v['n']} | {v['stopped']} | {v['right_reason']} |")
-    lines += ["", "| Field | Accuracy |", "|---|---|"] + [f"| {k} | {v:.0%} |" for k, v in s["fields"].items()]
+    lines += ["", "| Field | Accuracy |", "|---|---|"] + [
+        f"| {k} | {v:.0%} |" for k, v in s["fields"].items() if v is not None
+    ]
     lines += [
         "",
         "| Invoice | Planted problem | Expected | Got | Issues raised | Wrong fields |",
@@ -120,7 +135,7 @@ def to_md(s: dict, rows: list[dict], meta: dict) -> str:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--split", default="test", choices=["dev", "test", "all"])
+    ap.add_argument("--split", default="test", choices=["dev", "test", "stress", "all"])
     ap.add_argument("--n8n", default="http://localhost:5678/webhook/invoice")
     ap.add_argument("--api", default="http://localhost:8000")
     ap.add_argument("--gateway", default="http://localhost:8080")
@@ -151,7 +166,10 @@ def main() -> int:
         inv = body.get("invoice") or {}
         fok = {f: field_ok(f, inv.get(f), r["truth"].get(f)) for f in FIELDS}
         fok["line_items"] = lines_ok(inv.get("line_items") or [], r["truth"]["line_items"])
+        if not r.get("score_fields", True):
+            fok = dict.fromkeys(fok, True)
         row = {"id": r["id"], "problem": r["problem"], "expected_route": r["expected_route"],
+               "feature": r.get("feature"), "score_fields": r.get("score_fields", True),
                "expected_issues": r["expected_issues"], "route": body.get("route"),
                "issues": [i.get("code") for i in body.get("issues", [])], "seconds": round(secs, 2),
                "field_ok": fok, "all_fields_ok": all(fok.values()),
