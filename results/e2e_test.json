@@ -1,0 +1,2811 @@
+{
+ "summary": {
+  "invoices": 47,
+  "route_accuracy": 1.0,
+  "clean": 25,
+  "straight_through": 25,
+  "clean_sent_to_review": 0,
+  "clean_rejected": 0,
+  "problems": 22,
+  "problems_stopped": 22,
+  "problems_right_reason": 22,
+  "by_problem": {
+   "duplicate": {
+    "n": 3,
+    "stopped": 3,
+    "right_reason": 3
+   },
+   "future_date": {
+    "n": 2,
+    "stopped": 2,
+    "right_reason": 2
+   },
+   "invalid_gstin": {
+    "n": 3,
+    "stopped": 3,
+    "right_reason": 3
+   },
+   "line_math": {
+    "n": 2,
+    "stopped": 2,
+    "right_reason": 2
+   },
+   "over_limit": {
+    "n": 1,
+    "stopped": 1,
+    "right_reason": 1
+   },
+   "stale_date": {
+    "n": 3,
+    "stopped": 3,
+    "right_reason": 3
+   },
+   "tax_math": {
+    "n": 3,
+    "stopped": 3,
+    "right_reason": 3
+   },
+   "total_math": {
+    "n": 2,
+    "stopped": 2,
+    "right_reason": 2
+   },
+   "wrong_tax_type": {
+    "n": 3,
+    "stopped": 3,
+    "right_reason": 3
+   }
+  },
+  "confusion": {
+   "review->review": 19,
+   "approve->approve": 25,
+   "reject->reject": 3
+  },
+  "fields": {
+   "vendor_name": 1.0,
+   "vendor_gstin": 1.0,
+   "buyer_gstin": 1.0,
+   "invoice_number": 1.0,
+   "invoice_date": 1.0,
+   "po_number": 1.0,
+   "taxable_value": 1.0,
+   "cgst": 1.0,
+   "sgst": 1.0,
+   "igst": 1.0,
+   "total": 1.0,
+   "line_items": 1.0
+  },
+  "all_fields_correct": 47,
+  "seconds_p50": 6.6,
+  "seconds_p95": 11.1
+ },
+ "meta": {
+  "split": "test",
+  "model": "openai/gpt-oss-120b on Groq via llm-gateway",
+  "cost_usd": 0.02304,
+  "gateway_usage": [
+   {
+    "grp": "eval",
+    "requests": 47,
+    "ok": 47,
+    "cache_hits": 0,
+    "fallbacks": 0,
+    "prompt_tokens": 37201,
+    "completion_tokens": 29097,
+    "cost_usd": 0.023038,
+    "saved_usd": 0.0,
+    "avg_latency_ms": 6154.4
+   }
+  ]
+ },
+ "rows": [
+  {
+   "id": "inv-002",
+   "problem": "invalid_gstin",
+   "expected_route": "review",
+   "expected_issues": [
+    "invalid_gstin"
+   ],
+   "route": "review",
+   "issues": [
+    "invalid_gstin"
+   ],
+   "seconds": 2.25,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Vega Logistics LLP, invoice VL/2026-27/5203, Rs 9,798.88: sent for review. Vendor GSTIN 27AAJFV2209K1ZA fails the format or checksum test.",
+   "invoice": {
+    "vendor_name": "Vega Logistics LLP",
+    "invoice_number": "VL/2026-27/5203",
+    "po_number": "PO-26259",
+    "vendor_gstin": "27AAJFV2209K1ZA",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-09-30",
+    "taxable_value": 8749,
+    "total": 9798.88,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 1049.88,
+    "line_items": [
+     {
+      "description": "Freight, Mumbai to Delhi (per tonne)",
+      "quantity": 1,
+      "unit_price": 8749,
+      "amount": 8749,
+      "gst_rate": 12
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-003",
+   "problem": "future_date",
+   "expected_route": "review",
+   "expected_issues": [
+    "future_date"
+   ],
+   "route": "review",
+   "issues": [
+    "future_date"
+   ],
+   "seconds": 1.88,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Vega Logistics LLP, invoice VL/2026-27/7957, Rs 13,939.52: sent for review. The invoice is dated 2026-12-19, which is in the future.",
+   "invoice": {
+    "vendor_name": "Vega Logistics LLP",
+    "invoice_number": "VL/2026-27/7957",
+    "po_number": "PO-25575",
+    "vendor_gstin": "27AAJFV2209K1ZY",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-12-19",
+    "taxable_value": 12446,
+    "total": 13939.52,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 1493.52,
+    "line_items": [
+     {
+      "description": "Freight, Mumbai to Delhi (per tonne)",
+      "quantity": 2,
+      "unit_price": 6223,
+      "amount": 12446,
+      "gst_rate": 12
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-004",
+   "problem": "wrong_tax_type",
+   "expected_route": "review",
+   "expected_issues": [
+    "wrong_tax_type"
+   ],
+   "route": "review",
+   "issues": [
+    "wrong_tax_type"
+   ],
+   "seconds": 1.86,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Lotus Electricals, invoice LE/26-27/7415, Rs 17,170.86: sent for review. Vendor is in Uttar Pradesh and we are in Delhi, so tax should be IGST, not CGST + SGST.",
+   "invoice": {
+    "vendor_name": "Lotus Electricals",
+    "invoice_number": "LE/26-27/7415",
+    "po_number": null,
+    "vendor_gstin": "09AXLPL7725C1ZA",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-10-01",
+    "taxable_value": 14733,
+    "total": 17170.86,
+    "cgst": 1218.93,
+    "sgst": 1218.93,
+    "igst": 0,
+    "line_items": [
+     {
+      "description": "MCB, 32 A",
+      "quantity": 25,
+      "unit_price": 289,
+      "amount": 7225,
+      "gst_rate": 18
+     },
+     {
+      "description": "Copper wire, 2.5 sq mm (90 m)",
+      "quantity": 1,
+      "unit_price": 3940,
+      "amount": 3940,
+      "gst_rate": 18
+     },
+     {
+      "description": "LED panel, 36 W",
+      "quantity": 2,
+      "unit_price": 1784,
+      "amount": 3568,
+      "gst_rate": 12
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-006",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "route": "approve",
+   "issues": [],
+   "seconds": 2.55,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Lotus Electricals, invoice LE/2026-27/8315, Rs 14,650.96: all 8 checks passed, posted to the ledger.",
+   "invoice": {
+    "vendor_name": "Lotus Electricals",
+    "invoice_number": "LE/2026-27/8315",
+    "po_number": "PO-25004",
+    "vendor_gstin": "09AXLPL7725C1ZA",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-11-15",
+    "taxable_value": 12892,
+    "total": 14650.96,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 1758.96,
+    "line_items": [
+     {
+      "description": "Copper wire, 2.5 sq mm (90 m)",
+      "quantity": 1,
+      "unit_price": 3185,
+      "amount": 3185,
+      "gst_rate": 18
+     },
+     {
+      "description": "MCB, 32 A",
+      "quantity": 1,
+      "unit_price": 347,
+      "amount": 347,
+      "gst_rate": 18
+     },
+     {
+      "description": "LED panel, 36 W",
+      "quantity": 6,
+      "unit_price": 1560,
+      "amount": 9360,
+      "gst_rate": 12
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-007",
+   "problem": "wrong_tax_type",
+   "expected_route": "review",
+   "expected_issues": [
+    "wrong_tax_type"
+   ],
+   "route": "review",
+   "issues": [
+    "wrong_tax_type"
+   ],
+   "seconds": 1.89,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Vega Logistics LLP, invoice VL/2026-27/4752, Rs 32,687.20: sent for review. Vendor is in Maharashtra and we are in Delhi, so tax should be IGST, not CGST + SGST.",
+   "invoice": {
+    "vendor_name": "Vega Logistics LLP",
+    "invoice_number": "VL/2026-27/4752",
+    "po_number": null,
+    "vendor_gstin": "27AAJFV2209K1ZY",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-09-16",
+    "taxable_value": 28075,
+    "total": 32687.2,
+    "cgst": 2306.1,
+    "sgst": 2306.1,
+    "igst": 0,
+    "line_items": [
+     {
+      "description": "Freight, Mumbai to Delhi (per tonne)",
+      "quantity": 1,
+      "unit_price": 7355,
+      "amount": 7355,
+      "gst_rate": 12
+     },
+     {
+      "description": "Last-mile delivery (per drop)",
+      "quantity": 10,
+      "unit_price": 94,
+      "amount": 940,
+      "gst_rate": 18
+     },
+     {
+      "description": "Warehousing (per pallet-month)",
+      "quantity": 20,
+      "unit_price": 989,
+      "amount": 19780,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-008",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "route": "approve",
+   "issues": [],
+   "seconds": 1.7,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "PINNACLE LEGAL ASSOCIATES, invoice PL/26-27/3926, Rs 167,125.76: all 8 checks passed, posted to the ledger.",
+   "invoice": {
+    "vendor_name": "PINNACLE LEGAL ASSOCIATES",
+    "invoice_number": "PL/26-27/3926",
+    "po_number": "PO-25317",
+    "vendor_gstin": "07AAKFP6643G1Z0",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-11-01",
+    "taxable_value": 141632,
+    "total": 167125.76,
+    "cgst": 12746.88,
+    "sgst": 12746.88,
+    "igst": 0,
+    "line_items": [
+     {
+      "description": "Contract review",
+      "quantity": 2,
+      "unit_price": 58030,
+      "amount": 116060,
+      "gst_rate": 18
+     },
+     {
+      "description": "Trademark filing",
+      "quantity": 2,
+      "unit_price": 12786,
+      "amount": 25572,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-010",
+   "problem": "tax_math",
+   "expected_route": "review",
+   "expected_issues": [
+    "tax_math"
+   ],
+   "route": "review",
+   "issues": [
+    "tax_math"
+   ],
+   "seconds": 1.43,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Pinnacle Legal Associates, invoice PL/26-27/697, Rs 96,089.26: sent for review. The line rates give 15,459.48 of tax but the invoice charges 10,203.26.",
+   "invoice": {
+    "vendor_name": "Pinnacle Legal Associates",
+    "invoice_number": "PL/26-27/697",
+    "po_number": "PO-24813",
+    "vendor_gstin": "07AAKFP6643G1Z0",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-11-09",
+    "taxable_value": 85886,
+    "total": 96089.26,
+    "cgst": 5101.63,
+    "sgst": 5101.63,
+    "igst": 0,
+    "line_items": [
+     {
+      "description": "Trademark filing",
+      "quantity": 3,
+      "unit_price": 14700,
+      "amount": 44100,
+      "gst_rate": 18
+     },
+     {
+      "description": "Contract review",
+      "quantity": 1,
+      "unit_price": 41786,
+      "amount": 41786,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-011",
+   "problem": "invalid_gstin",
+   "expected_route": "review",
+   "expected_issues": [
+    "invalid_gstin"
+   ],
+   "route": "review",
+   "issues": [
+    "invalid_gstin"
+   ],
+   "seconds": 1.45,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Saffron Caterers, invoice SC/2026-27/2429, Rs 9,918.30: sent for review. Vendor GSTIN 07BCKPS1180L1ZA fails the format or checksum test.",
+   "invoice": {
+    "vendor_name": "Saffron Caterers",
+    "invoice_number": "SC/2026-27/2429",
+    "po_number": "PO-24959",
+    "vendor_gstin": "07BCKPS1180L1ZA",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-10-15",
+    "taxable_value": 9446,
+    "total": 9918.3,
+    "cgst": 236.15,
+    "sgst": 236.15,
+    "igst": 0,
+    "line_items": [
+     {
+      "description": "Tea and snacks (per person)",
+      "quantity": 50,
+      "unit_price": 91,
+      "amount": 4550,
+      "gst_rate": 5
+     },
+     {
+      "description": "Working lunch (per plate)",
+      "quantity": 12,
+      "unit_price": 408,
+      "amount": 4896,
+      "gst_rate": 5
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-012",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "route": "approve",
+   "issues": [],
+   "seconds": 1.45,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Greenleaf Housekeeping, invoice GH/26-27/474, Rs 38,929.38: all 8 checks passed, posted to the ledger.",
+   "invoice": {
+    "vendor_name": "Greenleaf Housekeeping",
+    "invoice_number": "GH/26-27/474",
+    "po_number": "PO-25247",
+    "vendor_gstin": "19ACFPG2257J1ZJ",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-09-16",
+    "taxable_value": 32991,
+    "total": 38929.38,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 5938.38,
+    "line_items": [
+     {
+      "description": "Floor deep-cleaning",
+      "quantity": 3,
+      "unit_price": 10997,
+      "amount": 32991,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-014",
+   "problem": "line_math",
+   "expected_route": "review",
+   "expected_issues": [
+    "line_math"
+   ],
+   "route": "review",
+   "issues": [
+    "line_math"
+   ],
+   "seconds": 8.62,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Nimbus Cloud Services Pvt Ltd, invoice NC/26-27/6126, Rs 411,333.84: sent for review. Line amounts don't add up: line 2: 3 x 83,068.00 = 249,204.00, invoice says 250,204.00.",
+   "invoice": {
+    "vendor_name": "Nimbus Cloud Services Pvt Ltd",
+    "invoice_number": "NC/26-27/6126",
+    "po_number": "PO-26309",
+    "vendor_gstin": "29AAFCN7710Q1ZS",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-09-17",
+    "taxable_value": 348588,
+    "total": 411333.84,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 62745.84,
+    "line_items": [
+     {
+      "description": "Managed database, monthly",
+      "quantity": 1,
+      "unit_price": 39212,
+      "amount": 39212,
+      "gst_rate": 18
+     },
+     {
+      "description": "Cloud compute, monthly",
+      "quantity": 3,
+      "unit_price": 83068,
+      "amount": 250204,
+      "gst_rate": 18
+     },
+     {
+      "description": "Object storage, 5 TB",
+      "quantity": 3,
+      "unit_price": 19724,
+      "amount": 59172,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-015",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "route": "approve",
+   "issues": [],
+   "seconds": 6.69,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "GREENLEAF HOUSEKEEPING, invoice GH/2026-27/3995, Rs 67,564.44: all 8 checks passed, posted to the ledger.",
+   "invoice": {
+    "vendor_name": "GREENLEAF HOUSEKEEPING",
+    "invoice_number": "GH/2026-27/3995",
+    "po_number": "PO-24698",
+    "vendor_gstin": "19ACFPG2257J1ZJ",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-10-08",
+    "taxable_value": 57258,
+    "total": 67564.44,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 10306.44,
+    "line_items": [
+     {
+      "description": "Pest control service",
+      "quantity": 2,
+      "unit_price": 4951,
+      "amount": 9902,
+      "gst_rate": 18
+     },
+     {
+      "description": "Floor deep-cleaning",
+      "quantity": 2,
+      "unit_price": 13692,
+      "amount": 27384,
+      "gst_rate": 18
+     },
+     {
+      "description": "Housekeeping staff (per person-month)",
+      "quantity": 1,
+      "unit_price": 19972,
+      "amount": 19972,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-016",
+   "problem": "stale_date",
+   "expected_route": "review",
+   "expected_issues": [
+    "stale_date"
+   ],
+   "route": "review",
+   "issues": [
+    "stale_date"
+   ],
+   "seconds": 6.11,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Orbit IT Hardware Pvt Ltd, invoice OI/2026-27/5221, Rs 273,205.40: sent for review. The invoice is dated 2025-10-21, more than 180 days ago.",
+   "invoice": {
+    "vendor_name": "Orbit IT Hardware Pvt Ltd",
+    "invoice_number": "OI/2026-27/5221",
+    "po_number": null,
+    "vendor_gstin": "36AABCO9934P1ZO",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2025-10-21",
+    "taxable_value": 231530,
+    "total": 273205.4,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 41675.4,
+    "line_items": [
+     {
+      "description": "Network switch, 24-port",
+      "quantity": 3,
+      "unit_price": 19377,
+      "amount": 58131,
+      "gst_rate": 18
+     },
+     {
+      "description": "USB-C dock",
+      "quantity": 2,
+      "unit_price": 8408,
+      "amount": 16816,
+      "gst_rate": 18
+     },
+     {
+      "description": "27-inch monitor",
+      "quantity": 1,
+      "unit_price": 21699,
+      "amount": 21699,
+      "gst_rate": 18
+     },
+     {
+      "description": "Laptop, 16 GB RAM",
+      "quantity": 2,
+      "unit_price": 67442,
+      "amount": 134884,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-018",
+   "problem": "line_math",
+   "expected_route": "review",
+   "expected_issues": [
+    "line_math"
+   ],
+   "route": "review",
+   "issues": [
+    "line_math"
+   ],
+   "seconds": 12.0,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Orbit IT Hardware Pvt Ltd, invoice OI/2026-27/6003, Rs 201,503.88: sent for review. Line amounts don't add up: line 1: 3 x 7,295.00 = 21,885.00, invoice says 22,135.00.",
+   "invoice": {
+    "vendor_name": "Orbit IT Hardware Pvt Ltd",
+    "invoice_number": "OI/2026-27/6003",
+    "po_number": "PO-24042",
+    "vendor_gstin": "36AABCO9934P1ZO",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-10-11",
+    "taxable_value": 170766,
+    "total": 201503.88,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 30737.88,
+    "line_items": [
+     {
+      "description": "USB-C dock",
+      "quantity": 3,
+      "unit_price": 7295,
+      "amount": 22135,
+      "gst_rate": 18
+     },
+     {
+      "description": "Laptop, 16 GB RAM",
+      "quantity": 1,
+      "unit_price": 77050,
+      "amount": 77050,
+      "gst_rate": 18
+     },
+     {
+      "description": "Network switch, 24-port",
+      "quantity": 1,
+      "unit_price": 25894,
+      "amount": 25894,
+      "gst_rate": 18
+     },
+     {
+      "description": "27-inch monitor",
+      "quantity": 3,
+      "unit_price": 15229,
+      "amount": 45687,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-019",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "route": "approve",
+   "issues": [],
+   "seconds": 6.67,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Greenleaf Housekeeping, invoice GH/FY27/7738, Rs 23,437.16: all 8 checks passed, posted to the ledger.",
+   "invoice": {
+    "vendor_name": "Greenleaf Housekeeping",
+    "invoice_number": "GH/FY27/7738",
+    "po_number": "PO-25918",
+    "vendor_gstin": "19ACFPG2257J1ZJ",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-11-03",
+    "taxable_value": 19862,
+    "total": 23437.16,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 3575.16,
+    "line_items": [
+     {
+      "description": "Housekeeping staff (per person-month)",
+      "quantity": 1,
+      "unit_price": 19862,
+      "amount": 19862,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-020",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "route": "approve",
+   "issues": [],
+   "seconds": 9.23,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Greenleaf Housekeeping, invoice GH/2026-27/2715, Rs 15,054.44: all 8 checks passed, posted to the ledger.",
+   "invoice": {
+    "vendor_name": "Greenleaf Housekeeping",
+    "invoice_number": "GH/2026-27/2715",
+    "po_number": null,
+    "vendor_gstin": "19ACFPG2257J1ZJ",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-09-12",
+    "taxable_value": 12758,
+    "total": 15054.44,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 2296.44,
+    "line_items": [
+     {
+      "description": "Floor deep-cleaning",
+      "quantity": 1,
+      "unit_price": 9191,
+      "amount": 9191,
+      "gst_rate": 18
+     },
+     {
+      "description": "Pest control service",
+      "quantity": 1,
+      "unit_price": 3567,
+      "amount": 3567,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-022",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "route": "approve",
+   "issues": [],
+   "seconds": 10.26,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Vega Logistics LLP, invoice VL/FY27/8005, Rs 25,325.72: all 8 checks passed, posted to the ledger.",
+   "invoice": {
+    "vendor_name": "Vega Logistics LLP",
+    "invoice_number": "VL/FY27/8005",
+    "po_number": null,
+    "vendor_gstin": "27AAJFV2209K1ZY",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-09-08",
+    "taxable_value": 22607,
+    "total": 25325.72,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 2718.72,
+    "line_items": [
+     {
+      "description": "Freight, Mumbai to Delhi (per tonne)",
+      "quantity": 3,
+      "unit_price": 7503,
+      "amount": 22509,
+      "gst_rate": 12
+     },
+     {
+      "description": "Last-mile delivery (per drop)",
+      "quantity": 1,
+      "unit_price": 98,
+      "amount": 98,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-023",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "route": "approve",
+   "issues": [],
+   "seconds": 6.01,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Orbit IT Hardware Pvt Ltd, invoice OI/26-27/2766, Rs 42,215.68: all 8 checks passed, posted to the ledger.",
+   "invoice": {
+    "vendor_name": "Orbit IT Hardware Pvt Ltd",
+    "invoice_number": "OI/26-27/2766",
+    "po_number": null,
+    "vendor_gstin": "36AABCO9934P1ZO",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-10-12",
+    "taxable_value": 35776,
+    "total": 42215.68,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 6439.68,
+    "line_items": [
+     {
+      "description": "27-inch monitor",
+      "quantity": 2,
+      "unit_price": 17888,
+      "amount": 35776,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-024",
+   "problem": "total_math",
+   "expected_route": "review",
+   "expected_issues": [
+    "total_math"
+   ],
+   "route": "review",
+   "issues": [
+    "total_math"
+   ],
+   "seconds": 12.75,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Kaveri Print House, invoice KP/26-27/4582, Rs 120,826.68: sent for review. Taxable value plus tax is 121,126.68 but the invoice total is 120,826.68.",
+   "invoice": {
+    "vendor_name": "Kaveri Print House",
+    "invoice_number": "KP/26-27/4582",
+    "po_number": null,
+    "vendor_gstin": "33ABHPK6630D1Z1",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-10-27",
+    "taxable_value": 103239,
+    "total": 120826.68,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 17887.68,
+    "line_items": [
+     {
+      "description": "Visiting cards, box of 100",
+      "quantity": 50,
+      "unit_price": 231,
+      "amount": 11550,
+      "gst_rate": 12
+     },
+     {
+      "description": "Brochures, A4 tri-fold",
+      "quantity": 3,
+      "unit_price": 13,
+      "amount": 39,
+      "gst_rate": 12
+     },
+     {
+      "description": "Standee, roll-up",
+      "quantity": 50,
+      "unit_price": 1833,
+      "amount": 91650,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-026",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "route": "approve",
+   "issues": [],
+   "seconds": 3.46,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Kaveri Print House, invoice KP/FY27/5145, Rs 588.00: all 8 checks passed, posted to the ledger.",
+   "invoice": {
+    "vendor_name": "Kaveri Print House",
+    "invoice_number": "KP/FY27/5145",
+    "po_number": null,
+    "vendor_gstin": "33ABHPK6630D1Z1",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-09-21",
+    "taxable_value": 525,
+    "total": 588,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 63,
+    "line_items": [
+     {
+      "description": "Brochures, A4 tri-fold",
+      "quantity": 25,
+      "unit_price": 21,
+      "amount": 525,
+      "gst_rate": 12
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-027",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "route": "approve",
+   "issues": [],
+   "seconds": 6.55,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "GREENLEAF HOUSEKEEPING, invoice GH/26-27/7457, Rs 82,249.54: all 8 checks passed, posted to the ledger.",
+   "invoice": {
+    "vendor_name": "GREENLEAF HOUSEKEEPING",
+    "invoice_number": "GH/26-27/7457",
+    "po_number": "PO-25068",
+    "vendor_gstin": "19ACFPG2257J1ZJ",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-10-22",
+    "taxable_value": 69703,
+    "total": 82249.54,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 12546.54,
+    "line_items": [
+     {
+      "description": "Housekeeping staff (per person-month)",
+      "quantity": 3,
+      "unit_price": 17828,
+      "amount": 53484,
+      "gst_rate": 18
+     },
+     {
+      "description": "Floor deep-cleaning",
+      "quantity": 1,
+      "unit_price": 9364,
+      "amount": 9364,
+      "gst_rate": 18
+     },
+     {
+      "description": "Pest control service",
+      "quantity": 1,
+      "unit_price": 6855,
+      "amount": 6855,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-028",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "route": "approve",
+   "issues": [],
+   "seconds": 6.23,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Deccan Packaging Industries, invoice DP/FY27/1372, Rs 5,684.02: all 8 checks passed, posted to the ledger.",
+   "invoice": {
+    "vendor_name": "Deccan Packaging Industries",
+    "invoice_number": "DP/FY27/1372",
+    "po_number": null,
+    "vendor_gstin": "24AAEFD4471R1Z1",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-09-15",
+    "taxable_value": 4819,
+    "total": 5684.02,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 865.02,
+    "line_items": [
+     {
+      "description": "Corrugated boxes, 5-ply",
+      "quantity": 1,
+      "unit_price": 40,
+      "amount": 40,
+      "gst_rate": 12
+     },
+     {
+      "description": "Stretch film roll",
+      "quantity": 6,
+      "unit_price": 773,
+      "amount": 4638,
+      "gst_rate": 18
+     },
+     {
+      "description": "Packing tape, 48 mm",
+      "quantity": 3,
+      "unit_price": 47,
+      "amount": 141,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-030",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "route": "approve",
+   "issues": [],
+   "seconds": 8.16,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Sharma Office Supplies, invoice SO/26-27/2759, Rs 28,518.24: all 8 checks passed, posted to the ledger.",
+   "invoice": {
+    "vendor_name": "Sharma Office Supplies",
+    "invoice_number": "SO/26-27/2759",
+    "po_number": null,
+    "vendor_gstin": "07AKJPS4821M1ZN",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-10-16",
+    "taxable_value": 24168,
+    "total": 28518.24,
+    "cgst": 2175.12,
+    "sgst": 2175.12,
+    "igst": 0,
+    "line_items": [
+     {
+      "description": "Stapler, heavy duty",
+      "quantity": 12,
+      "unit_price": 634,
+      "amount": 7608,
+      "gst_rate": 18
+     },
+     {
+      "description": "A4 copier paper, 500 sheets",
+      "quantity": 20,
+      "unit_price": 828,
+      "amount": 16560,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-031",
+   "problem": "wrong_tax_type",
+   "expected_route": "review",
+   "expected_issues": [
+    "wrong_tax_type"
+   ],
+   "route": "review",
+   "issues": [
+    "wrong_tax_type"
+   ],
+   "seconds": 5.6,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "BRIGHTLINE FACILITY SERVICES, invoice BF/FY27/2491, Rs 48,257.28: sent for review. Vendor is in Haryana and we are in Delhi, so tax should be IGST, not CGST + SGST.",
+   "invoice": {
+    "vendor_name": "BRIGHTLINE FACILITY SERVICES",
+    "invoice_number": "BF/FY27/2491",
+    "po_number": "PO-25901",
+    "vendor_gstin": "06AAGCB5512H1ZY",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-11-05",
+    "taxable_value": 40896,
+    "total": 48257.28,
+    "cgst": 3680.64,
+    "sgst": 3680.64,
+    "igst": 0,
+    "line_items": [
+     {
+      "description": "Housekeeping staff (per person-month)",
+      "quantity": 2,
+      "unit_price": 20448,
+      "amount": 40896,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-032",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "route": "approve",
+   "issues": [],
+   "seconds": 3.73,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Greenleaf Housekeeping, invoice GH/26-27/6636, Rs 99,288.74: all 8 checks passed, posted to the ledger.",
+   "invoice": {
+    "vendor_name": "Greenleaf Housekeeping",
+    "invoice_number": "GH/26-27/6636",
+    "po_number": "PO-26179",
+    "vendor_gstin": "19ACFPG2257J1ZJ",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-11-13",
+    "taxable_value": 84143,
+    "total": 99288.74,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 15145.74,
+    "line_items": [
+     {
+      "description": "Housekeeping staff (per person-month)",
+      "quantity": 2,
+      "unit_price": 20781,
+      "amount": 41562,
+      "gst_rate": 18
+     },
+     {
+      "description": "Pest control service",
+      "quantity": 3,
+      "unit_price": 4579,
+      "amount": 13737,
+      "gst_rate": 18
+     },
+     {
+      "description": "Floor deep-cleaning",
+      "quantity": 2,
+      "unit_price": 14422,
+      "amount": 28844,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-034",
+   "problem": "stale_date",
+   "expected_route": "review",
+   "expected_issues": [
+    "stale_date"
+   ],
+   "route": "review",
+   "issues": [
+    "stale_date"
+   ],
+   "seconds": 10.84,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Sharma Office Supplies, invoice SO/26-27/9039, Rs 5,766.56: sent for review. The invoice is dated 2026-04-06, more than 180 days ago.",
+   "invoice": {
+    "vendor_name": "Sharma Office Supplies",
+    "invoice_number": "SO/26-27/9039",
+    "po_number": null,
+    "vendor_gstin": "07AKJPS4821M1ZN",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-04-06",
+    "taxable_value": 5012,
+    "total": 5766.56,
+    "cgst": 377.28,
+    "sgst": 377.28,
+    "igst": 0,
+    "line_items": [
+     {
+      "description": "A4 copier paper, 500 sheets",
+      "quantity": 1,
+      "unit_price": 464,
+      "amount": 464,
+      "gst_rate": 18
+     },
+     {
+      "description": "Box files",
+      "quantity": 20,
+      "unit_price": 123,
+      "amount": 2460,
+      "gst_rate": 12
+     },
+     {
+      "description": "Ball pens, box of 50",
+      "quantity": 6,
+      "unit_price": 348,
+      "amount": 2088,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-035",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "route": "approve",
+   "issues": [],
+   "seconds": 11.43,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Vega Logistics LLP, invoice VL/26-27/9648, Rs 15,806.10: all 8 checks passed, posted to the ledger.",
+   "invoice": {
+    "vendor_name": "Vega Logistics LLP",
+    "invoice_number": "VL/26-27/9648",
+    "po_number": null,
+    "vendor_gstin": "27AAJFV2209K1ZY",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-09-28",
+    "taxable_value": 13395,
+    "total": 15806.1,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 2411.1,
+    "line_items": [
+     {
+      "description": "Warehousing (per pallet-month)",
+      "quantity": 10,
+      "unit_price": 1062,
+      "amount": 10620,
+      "gst_rate": 18
+     },
+     {
+      "description": "Last-mile delivery (per drop)",
+      "quantity": 25,
+      "unit_price": 111,
+      "amount": 2775,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-036",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "route": "approve",
+   "issues": [],
+   "seconds": 5.27,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Greenleaf Housekeeping, invoice GH/26-27/4488, Rs 60,659.08: all 8 checks passed, posted to the ledger.",
+   "invoice": {
+    "vendor_name": "Greenleaf Housekeeping",
+    "invoice_number": "GH/26-27/4488",
+    "po_number": null,
+    "vendor_gstin": "19ACFPG2257J1ZJ",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-09-07",
+    "taxable_value": 51406,
+    "total": 60659.08,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 9253.08,
+    "line_items": [
+     {
+      "description": "Pest control service",
+      "quantity": 2,
+      "unit_price": 6884,
+      "amount": 13768,
+      "gst_rate": 18
+     },
+     {
+      "description": "Housekeeping staff (per person-month)",
+      "quantity": 2,
+      "unit_price": 18819,
+      "amount": 37638,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-038",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "route": "approve",
+   "issues": [],
+   "seconds": 6.92,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Sharma Office Supplies, invoice SO/FY27/5766, Rs 18,288.64: all 8 checks passed, posted to the ledger.",
+   "invoice": {
+    "vendor_name": "Sharma Office Supplies",
+    "invoice_number": "SO/FY27/5766",
+    "po_number": "PO-24604",
+    "vendor_gstin": "07AKJPS4821M1ZN",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-10-11",
+    "taxable_value": 15580,
+    "total": 18288.64,
+    "cgst": 1354.32,
+    "sgst": 1354.32,
+    "igst": 0,
+    "line_items": [
+     {
+      "description": "Box files",
+      "quantity": 12,
+      "unit_price": 133,
+      "amount": 1596,
+      "gst_rate": 12
+     },
+     {
+      "description": "Ball pens, box of 50",
+      "quantity": 12,
+      "unit_price": 276,
+      "amount": 3312,
+      "gst_rate": 18
+     },
+     {
+      "description": "Stapler, heavy duty",
+      "quantity": 4,
+      "unit_price": 598,
+      "amount": 2392,
+      "gst_rate": 18
+     },
+     {
+      "description": "A4 copier paper, 500 sheets",
+      "quantity": 20,
+      "unit_price": 414,
+      "amount": 8280,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-039",
+   "problem": "invalid_gstin",
+   "expected_route": "review",
+   "expected_issues": [
+    "invalid_gstin"
+   ],
+   "route": "review",
+   "issues": [
+    "invalid_gstin"
+   ],
+   "seconds": 7.3,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Vega Logistics LLP, invoice VL/2026-27/270, Rs 27,515.88: sent for review. Vendor GSTIN 27AAJFV2209K1ZA fails the format or checksum test.",
+   "invoice": {
+    "vendor_name": "Vega Logistics LLP",
+    "invoice_number": "VL/2026-27/270",
+    "po_number": "PO-24355",
+    "vendor_gstin": "27AAJFV2209K1ZA",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-09-15",
+    "taxable_value": 24399,
+    "total": 27515.88,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 3116.88,
+    "line_items": [
+     {
+      "description": "Last-mile delivery (per drop)",
+      "quantity": 25,
+      "unit_price": 126,
+      "amount": 3150,
+      "gst_rate": 18
+     },
+     {
+      "description": "Freight, Mumbai to Delhi (per tonne)",
+      "quantity": 3,
+      "unit_price": 7083,
+      "amount": 21249,
+      "gst_rate": 12
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-040",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "route": "approve",
+   "issues": [],
+   "seconds": 5.76,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "DECCAN PACKAGING INDUSTRIES, invoice DP/26-27/6422, Rs 141.60: all 8 checks passed, posted to the ledger.",
+   "invoice": {
+    "vendor_name": "DECCAN PACKAGING INDUSTRIES",
+    "invoice_number": "DP/26-27/6422",
+    "po_number": "PO-25300",
+    "vendor_gstin": "24AAEFD4471R1Z1",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-10-10",
+    "taxable_value": 120,
+    "total": 141.6,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 21.6,
+    "line_items": [
+     {
+      "description": "Packing tape, 48 mm",
+      "quantity": 3,
+      "unit_price": 40,
+      "amount": 120,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-042",
+   "problem": "total_math",
+   "expected_route": "review",
+   "expected_issues": [
+    "total_math"
+   ],
+   "route": "review",
+   "issues": [
+    "total_math"
+   ],
+   "seconds": 8.03,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Lotus Electricals, invoice LE/FY27/5183, Rs 47,441.52: sent for review. Taxable value plus tax is 47,741.52 but the invoice total is 47,441.52.",
+   "invoice": {
+    "vendor_name": "Lotus Electricals",
+    "invoice_number": "LE/FY27/5183",
+    "po_number": "PO-26591",
+    "vendor_gstin": "09AXLPL7725C1ZA",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-10-14",
+    "taxable_value": 41844,
+    "total": 47441.52,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 5897.52,
+    "line_items": [
+     {
+      "description": "Copper wire, 2.5 sq mm (90 m)",
+      "quantity": 1,
+      "unit_price": 3604,
+      "amount": 3604,
+      "gst_rate": 18
+     },
+     {
+      "description": "MCB, 32 A",
+      "quantity": 50,
+      "unit_price": 220,
+      "amount": 11000,
+      "gst_rate": 18
+     },
+     {
+      "description": "LED panel, 36 W",
+      "quantity": 20,
+      "unit_price": 1362,
+      "amount": 27240,
+      "gst_rate": 12
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-043",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "route": "approve",
+   "issues": [],
+   "seconds": 6.78,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Nimbus Cloud Services Pvt Ltd, invoice NC/FY27/8022, Rs 65,220.96: all 8 checks passed, posted to the ledger.",
+   "invoice": {
+    "vendor_name": "Nimbus Cloud Services Pvt Ltd",
+    "invoice_number": "NC/FY27/8022",
+    "po_number": null,
+    "vendor_gstin": "29AAFCN7710Q1ZS",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-11-14",
+    "taxable_value": 55272,
+    "total": 65220.96,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 9948.96,
+    "line_items": [
+     {
+      "description": "Managed database, monthly",
+      "quantity": 3,
+      "unit_price": 18424,
+      "amount": 55272,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-044",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "route": "approve",
+   "issues": [],
+   "seconds": 7.04,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Deccan Packaging Industries, invoice DP/FY27/4030, Rs 248.64: all 8 checks passed, posted to the ledger.",
+   "invoice": {
+    "vendor_name": "Deccan Packaging Industries",
+    "invoice_number": "DP/FY27/4030",
+    "po_number": "PO-24380",
+    "vendor_gstin": "24AAEFD4471R1Z1",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-11-10",
+    "taxable_value": 222,
+    "total": 248.64,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 26.64,
+    "line_items": [
+     {
+      "description": "Corrugated boxes, 5-ply",
+      "quantity": 6,
+      "unit_price": 37,
+      "amount": 222,
+      "gst_rate": 12
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-046",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "route": "approve",
+   "issues": [],
+   "seconds": 7.26,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Saffron Caterers, invoice SC/2026-27/5029, Rs 5,254.20: all 8 checks passed, posted to the ledger.",
+   "invoice": {
+    "vendor_name": "Saffron Caterers",
+    "invoice_number": "SC/2026-27/5029",
+    "po_number": null,
+    "vendor_gstin": "07BCKPS1180L1Z6",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-10-08",
+    "taxable_value": 5004,
+    "total": 5254.2,
+    "cgst": 125.1,
+    "sgst": 125.1,
+    "igst": 0,
+    "line_items": [
+     {
+      "description": "Working lunch (per plate)",
+      "quantity": 12,
+      "unit_price": 417,
+      "amount": 5004,
+      "gst_rate": 5
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-047",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "route": "approve",
+   "issues": [],
+   "seconds": 2.39,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "LOTUS ELECTRICALS, invoice LE/2026-27/6396, Rs 2,663.36: all 8 checks passed, posted to the ledger.",
+   "invoice": {
+    "vendor_name": "LOTUS ELECTRICALS",
+    "invoice_number": "LE/2026-27/6396",
+    "po_number": null,
+    "vendor_gstin": "09AXLPL7725C1ZA",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-10-02",
+    "taxable_value": 2378,
+    "total": 2663.36,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 285.36,
+    "line_items": [
+     {
+      "description": "LED panel, 36 W",
+      "quantity": 2,
+      "unit_price": 1189,
+      "amount": 2378,
+      "gst_rate": 12
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-048",
+   "problem": "over_limit",
+   "expected_route": "review",
+   "expected_issues": [
+    "over_limit"
+   ],
+   "route": "review",
+   "issues": [
+    "over_limit"
+   ],
+   "seconds": 7.72,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Saffron Caterers, invoice SC/FY27/6897, Rs 591,360.00: sent for review. Total 591,360.00 is above the 500,000 approval limit.",
+   "invoice": {
+    "vendor_name": "Saffron Caterers",
+    "invoice_number": "SC/FY27/6897",
+    "po_number": "PO-25071",
+    "vendor_gstin": "07BCKPS1180L1Z6",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-09-29",
+    "taxable_value": 563200,
+    "total": 591360,
+    "cgst": 14080,
+    "sgst": 14080,
+    "igst": 0,
+    "line_items": [
+     {
+      "description": "Working lunch (per plate)",
+      "quantity": 1600,
+      "unit_price": 352,
+      "amount": 563200,
+      "gst_rate": 5
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-050",
+   "problem": "future_date",
+   "expected_route": "review",
+   "expected_issues": [
+    "future_date"
+   ],
+   "route": "review",
+   "issues": [
+    "future_date"
+   ],
+   "seconds": 8.81,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Pinnacle Legal Associates, invoice PL/2026-27/4745, Rs 177,423.62: sent for review. The invoice is dated 2026-12-11, which is in the future.",
+   "invoice": {
+    "vendor_name": "Pinnacle Legal Associates",
+    "invoice_number": "PL/2026-27/4745",
+    "po_number": "PO-24284",
+    "vendor_gstin": "07AAKFP6643G1Z0",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-12-11",
+    "taxable_value": 150359,
+    "total": 177423.62,
+    "cgst": 13532.31,
+    "sgst": 13532.31,
+    "igst": 0,
+    "line_items": [
+     {
+      "description": "Trademark filing",
+      "quantity": 2,
+      "unit_price": 12955,
+      "amount": 25910,
+      "gst_rate": 18
+     },
+     {
+      "description": "Contract review",
+      "quantity": 3,
+      "unit_price": 41483,
+      "amount": 124449,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-051",
+   "problem": "stale_date",
+   "expected_route": "review",
+   "expected_issues": [
+    "stale_date"
+   ],
+   "route": "review",
+   "issues": [
+    "stale_date"
+   ],
+   "seconds": 4.93,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Deccan Packaging Industries, invoice DP/26-27/9425, Rs 2,106.92: sent for review. The invoice is dated 2026-03-11, more than 180 days ago.",
+   "invoice": {
+    "vendor_name": "Deccan Packaging Industries",
+    "invoice_number": "DP/26-27/9425",
+    "po_number": null,
+    "vendor_gstin": "24AAEFD4471R1Z1",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-03-11",
+    "taxable_value": 1844,
+    "total": 2106.92,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 262.92,
+    "line_items": [
+     {
+      "description": "Corrugated boxes, 5-ply",
+      "quantity": 25,
+      "unit_price": 46,
+      "amount": 1150,
+      "gst_rate": 12
+     },
+     {
+      "description": "Stretch film roll",
+      "quantity": 1,
+      "unit_price": 694,
+      "amount": 694,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-052",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "route": "approve",
+   "issues": [],
+   "seconds": 9.68,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Coastal Security Agency, invoice CS/2026-27/9845, Rs 55,837.60: all 8 checks passed, posted to the ledger.",
+   "invoice": {
+    "vendor_name": "Coastal Security Agency",
+    "invoice_number": "CS/2026-27/9845",
+    "po_number": "PO-25392",
+    "vendor_gstin": "32AAHFC3398N1Z2",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-10-19",
+    "taxable_value": 47320,
+    "total": 55837.6,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 8517.6,
+    "line_items": [
+     {
+      "description": "Security guard (per guard-month)",
+      "quantity": 2,
+      "unit_price": 22006,
+      "amount": 44012,
+      "gst_rate": 18
+     },
+     {
+      "description": "CCTV maintenance visit",
+      "quantity": 1,
+      "unit_price": 3308,
+      "amount": 3308,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-054",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "route": "approve",
+   "issues": [],
+   "seconds": 7.64,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Coastal Security Agency, invoice CS/26-27/4484, Rs 4,173.66: all 8 checks passed, posted to the ledger.",
+   "invoice": {
+    "vendor_name": "Coastal Security Agency",
+    "invoice_number": "CS/26-27/4484",
+    "po_number": "PO-24733",
+    "vendor_gstin": "32AAHFC3398N1Z2",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-11-15",
+    "taxable_value": 3537,
+    "total": 4173.66,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 636.66,
+    "line_items": [
+     {
+      "description": "CCTV maintenance visit",
+      "quantity": 1,
+      "unit_price": 3537,
+      "amount": 3537,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-055",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "route": "approve",
+   "issues": [],
+   "seconds": 9.18,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "NIMBUS CLOUD SERVICES PVT LTD, invoice NC/FY27/9486, Rs 128,275.44: all 8 checks passed, posted to the ledger.",
+   "invoice": {
+    "vendor_name": "NIMBUS CLOUD SERVICES PVT LTD",
+    "invoice_number": "NC/FY27/9486",
+    "po_number": null,
+    "vendor_gstin": "29AAFCN7710Q1ZS",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-11-05",
+    "taxable_value": 108708,
+    "total": 128275.44,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 19567.44,
+    "line_items": [
+     {
+      "description": "Cloud compute, monthly",
+      "quantity": 1,
+      "unit_price": 63809,
+      "amount": 63809,
+      "gst_rate": 18
+     },
+     {
+      "description": "Managed database, monthly",
+      "quantity": 1,
+      "unit_price": 34983,
+      "amount": 34983,
+      "gst_rate": 18
+     },
+     {
+      "description": "Object storage, 5 TB",
+      "quantity": 1,
+      "unit_price": 9916,
+      "amount": 9916,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-056",
+   "problem": "tax_math",
+   "expected_route": "review",
+   "expected_issues": [
+    "tax_math"
+   ],
+   "route": "review",
+   "issues": [
+    "tax_math"
+   ],
+   "seconds": 3.76,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Brightline Facility Services, invoice BF/2026-27/8501, Rs 69,707.76: sent for review. The line rates give 9,879.84 of tax but the invoice charges 14,819.76.",
+   "invoice": {
+    "vendor_name": "Brightline Facility Services",
+    "invoice_number": "BF/2026-27/8501",
+    "po_number": "PO-26200",
+    "vendor_gstin": "06AAGCB5512H1ZY",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-09-21",
+    "taxable_value": 54888,
+    "total": 69707.76,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 14819.76,
+    "line_items": [
+     {
+      "description": "Housekeeping staff (per person-month)",
+      "quantity": 2,
+      "unit_price": 19953,
+      "amount": 39906,
+      "gst_rate": 18
+     },
+     {
+      "description": "Pest control service",
+      "quantity": 3,
+      "unit_price": 4994,
+      "amount": 14982,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-058",
+   "problem": "tax_math",
+   "expected_route": "review",
+   "expected_issues": [
+    "tax_math"
+   ],
+   "route": "review",
+   "issues": [
+    "tax_math"
+   ],
+   "seconds": 11.08,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Pinnacle Legal Associates, invoice PL/26-27/3685, Rs 110,220.76: sent for review. The line rates give 15,621.84 of tax but the invoice charges 23,432.76.",
+   "invoice": {
+    "vendor_name": "Pinnacle Legal Associates",
+    "invoice_number": "PL/26-27/3685",
+    "po_number": "PO-25890",
+    "vendor_gstin": "07AAKFP6643G1Z0",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-09-24",
+    "taxable_value": 86788,
+    "total": 110220.76,
+    "cgst": 11716.38,
+    "sgst": 11716.38,
+    "igst": 0,
+    "line_items": [
+     {
+      "description": "Trademark filing",
+      "quantity": 1,
+      "unit_price": 10888,
+      "amount": 10888,
+      "gst_rate": 18
+     },
+     {
+      "description": "Contract review",
+      "quantity": 2,
+      "unit_price": 37950,
+      "amount": 75900,
+      "gst_rate": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-059",
+   "problem": null,
+   "expected_route": "approve",
+   "expected_issues": [],
+   "route": "approve",
+   "issues": [],
+   "seconds": 5.25,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "LOTUS ELECTRICALS, invoice LE/2026-27/9154, Rs 10,260.98: all 8 checks passed, posted to the ledger.",
+   "invoice": {
+    "vendor_name": "LOTUS ELECTRICALS",
+    "invoice_number": "LE/2026-27/9154",
+    "po_number": "PO-25217",
+    "vendor_gstin": "09AXLPL7725C1ZA",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-10-23",
+    "taxable_value": 8987,
+    "total": 10260.98,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 1273.98,
+    "line_items": [
+     {
+      "description": "MCB, 32 A",
+      "quantity": 1,
+      "unit_price": 275,
+      "amount": 275,
+      "gst_rate": 18
+     },
+     {
+      "description": "Copper wire, 2.5 sq mm (90 m)",
+      "quantity": 1,
+      "unit_price": 2984,
+      "amount": 2984,
+      "gst_rate": 18
+     },
+     {
+      "description": "LED panel, 36 W",
+      "quantity": 4,
+      "unit_price": 1432,
+      "amount": 5728,
+      "gst_rate": 12
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-060",
+   "problem": "duplicate",
+   "expected_route": "reject",
+   "expected_issues": [
+    "duplicate"
+   ],
+   "route": "reject",
+   "issues": [
+    "duplicate"
+   ],
+   "seconds": 3.08,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Deccan Packaging Industries, invoice DP/FY27/4030, Rs 248.64: rejected. Invoice DP/FY27/4030 from 24AAEFD4471R1Z1 is already in the ledger.",
+   "invoice": {
+    "vendor_name": "Deccan Packaging Industries",
+    "invoice_number": "DP/FY27/4030",
+    "po_number": "PO-24380",
+    "vendor_gstin": "24AAEFD4471R1Z1",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-11-10",
+    "taxable_value": 222,
+    "total": 248.64,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 26.64,
+    "line_items": [
+     {
+      "description": "Corrugated boxes, 5-ply",
+      "quantity": 6,
+      "unit_price": 37,
+      "amount": 222,
+      "gst_rate": 12
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-061",
+   "problem": "duplicate",
+   "expected_route": "reject",
+   "expected_issues": [
+    "duplicate"
+   ],
+   "route": "reject",
+   "issues": [
+    "duplicate"
+   ],
+   "seconds": 9.12,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "LOTUS ELECTRICALS, invoice LE/2026-27/8315, Rs 14,650.96: rejected. Invoice LE/2026-27/8315 from 09AXLPL7725C1ZA is already in the ledger.",
+   "invoice": {
+    "vendor_name": "LOTUS ELECTRICALS",
+    "invoice_number": "LE/2026-27/8315",
+    "po_number": "PO-25004",
+    "vendor_gstin": "09AXLPL7725C1ZA",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-11-15",
+    "taxable_value": 12892,
+    "total": 14650.96,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 1758.96,
+    "line_items": [
+     {
+      "description": "Copper wire, 2.5 sq mm (90 m)",
+      "quantity": 1,
+      "unit_price": 3185,
+      "amount": 3185,
+      "gst_rate": 18
+     },
+     {
+      "description": "MCB, 32 A",
+      "quantity": 1,
+      "unit_price": 347,
+      "amount": 347,
+      "gst_rate": 18
+     },
+     {
+      "description": "LED panel, 36 W",
+      "quantity": 6,
+      "unit_price": 1560,
+      "amount": 9360,
+      "gst_rate": 12
+     }
+    ]
+   }
+  },
+  {
+   "id": "inv-062",
+   "problem": "duplicate",
+   "expected_route": "reject",
+   "expected_issues": [
+    "duplicate"
+   ],
+   "route": "reject",
+   "issues": [
+    "duplicate"
+   ],
+   "seconds": 6.62,
+   "field_ok": {
+    "vendor_name": true,
+    "vendor_gstin": true,
+    "buyer_gstin": true,
+    "invoice_number": true,
+    "invoice_date": true,
+    "po_number": true,
+    "taxable_value": true,
+    "cgst": true,
+    "sgst": true,
+    "igst": true,
+    "total": true,
+    "line_items": true
+   },
+   "all_fields_ok": true,
+   "wrong_fields": [],
+   "summary": "Vega Logistics LLP, invoice VL/FY27/8005, Rs 25,325.72: rejected. Invoice VL/FY27/8005 from 27AAJFV2209K1ZY is already in the ledger.",
+   "invoice": {
+    "vendor_name": "Vega Logistics LLP",
+    "invoice_number": "VL/FY27/8005",
+    "po_number": null,
+    "vendor_gstin": "27AAJFV2209K1ZY",
+    "buyer_gstin": "07AABCA1234A1ZL",
+    "invoice_date": "2026-09-08",
+    "taxable_value": 22607,
+    "total": 25325.72,
+    "cgst": 0,
+    "sgst": 0,
+    "igst": 2718.72,
+    "line_items": [
+     {
+      "description": "Freight, Mumbai to Delhi (per tonne)",
+      "quantity": 3,
+      "unit_price": 7503,
+      "amount": 22509,
+      "gst_rate": 12
+     },
+     {
+      "description": "Last-mile delivery (per drop)",
+      "quantity": 1,
+      "unit_price": 98,
+      "amount": 98,
+      "gst_rate": 18
+     }
+    ]
+   }
+  }
+ ]
+}
