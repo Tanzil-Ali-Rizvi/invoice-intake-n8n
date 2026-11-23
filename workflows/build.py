@@ -111,11 +111,12 @@ def intake() -> dict:
         node("Invoice received", "n8n-nodes-base.webhook", 2, 0, 300,
              {"httpMethod": "POST", "path": "invoice", "responseMode": "responseNode", "options": {}},
              webhookId="7f1c2a90-intake-invoice"),
-        node("Fingerprint file", "n8n-nodes-base.crypto", 2, 220, 300,
+        # Read the text first and keep the file attached: the Crypto node drops the file once it has hashed it.
+        node("Read PDF text", "n8n-nodes-base.extractFromFile", 1, 220, 300,
+             {"operation": "pdf", "binaryPropertyName": "data", "options": {"keepSource": "binary"}}),
+        node("Fingerprint file", "n8n-nodes-base.crypto", 2, 440, 300,
              {"action": "hash", "type": "SHA256", "binaryData": True, "binaryPropertyName": "data",
               "dataPropertyName": "file_sha256", "encoding": "hex"}),
-        node("Read PDF text", "n8n-nodes-base.extractFromFile", 1, 440, 300,
-             {"operation": "pdf", "binaryPropertyName": "data", "options": {}}),
         node("Build extraction request", "n8n-nodes-base.code", 2, 660, 300,
              {"mode": "runOnceForAllItems", "language": "javaScript", "jsCode": BUILD_REQUEST % json.dumps(PROMPT)}),
         node("Extract fields (LLM)", "n8n-nodes-base.httpRequest", 4.2, 880, 300,
@@ -134,9 +135,9 @@ def intake() -> dict:
              {"respondWith": "json", "responseBody": reply, "options": {}}),
     ]  # fmt: skip
     connections = {
-        "Invoice received": {"main": [[{"node": "Fingerprint file", "type": "main", "index": 0}]]},
-        "Fingerprint file": {"main": [[{"node": "Read PDF text", "type": "main", "index": 0}]]},
-        "Read PDF text": {"main": [[{"node": "Build extraction request", "type": "main", "index": 0}]]},
+        "Invoice received": {"main": [[{"node": "Read PDF text", "type": "main", "index": 0}]]},
+        "Read PDF text": {"main": [[{"node": "Fingerprint file", "type": "main", "index": 0}]]},
+        "Fingerprint file": {"main": [[{"node": "Build extraction request", "type": "main", "index": 0}]]},
         "Build extraction request": {"main": [[{"node": "Extract fields (LLM)", "type": "main", "index": 0}]]},
         "Extract fields (LLM)": {"main": [[{"node": "Check against AP rules", "type": "main", "index": 0}]]},
         "Check against AP rules": {"main": [[{"node": "Route", "type": "main", "index": 0}]]},

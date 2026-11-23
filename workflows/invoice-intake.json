@@ -20,12 +20,29 @@
       "webhookId": "7f1c2a90-intake-invoice"
     },
     {
+      "id": "read-pdf-text",
+      "name": "Read PDF text",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        220,
+        300
+      ],
+      "parameters": {
+        "operation": "pdf",
+        "binaryPropertyName": "data",
+        "options": {
+          "keepSource": "binary"
+        }
+      }
+    },
+    {
       "id": "fingerprint-file",
       "name": "Fingerprint file",
       "type": "n8n-nodes-base.crypto",
       "typeVersion": 2,
       "position": [
-        220,
+        440,
         300
       ],
       "parameters": {
@@ -35,21 +52,6 @@
         "binaryPropertyName": "data",
         "dataPropertyName": "file_sha256",
         "encoding": "hex"
-      }
-    },
-    {
-      "id": "read-pdf-text",
-      "name": "Read PDF text",
-      "type": "n8n-nodes-base.extractFromFile",
-      "typeVersion": 1,
-      "position": [
-        440,
-        300
-      ],
-      "parameters": {
-        "operation": "pdf",
-        "binaryPropertyName": "data",
-        "options": {}
       }
     },
     {
@@ -282,17 +284,6 @@
       "main": [
         [
           {
-            "node": "Fingerprint file",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Fingerprint file": {
-      "main": [
-        [
-          {
             "node": "Read PDF text",
             "type": "main",
             "index": 0
@@ -301,6 +292,17 @@
       ]
     },
     "Read PDF text": {
+      "main": [
+        [
+          {
+            "node": "Fingerprint file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fingerprint file": {
       "main": [
         [
           {
